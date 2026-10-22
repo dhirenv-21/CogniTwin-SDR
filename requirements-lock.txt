@@ -1,0 +1,10 @@
+# Exact versions used to produce every result on branch autonomous-completion (2026-10-22),
+# Python 3.10.11 on Windows 11. requirements.txt keeps the original lower bounds.
+#   python -m venv venv && venv\Scripts\activate && pip install -r requirements-lock.txt
+# scikit-learn is pinned because results/ai/modulation_classifier/*.joblib were pickled with it.
+numpy==2.2.6
+scipy==1.15.3
+matplotlib==3.10.8
+scikit-learn==1.7.2
+joblib==1.5.3
+pytest==9.1.1

@@ -1,0 +1,1054 @@
+{
+  "commit": "87b74b8",
+  "conditions": {
+    "ramp_snr": [
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 13.6
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 11.2
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 8.8
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 6.4
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 4.0
+      }
+    ],
+    "static_awgn_snr12_J0": [
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 12.0
+      }
+    ],
+    "static_awgn_snr12_J0.05": [
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.05,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.05,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.05,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.05,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.05,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.05,
+        "snr_db": 12.0
+      }
+    ],
+    "static_awgn_snr12_J0.2": [
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.2,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.2,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.2,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.2,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.2,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.2,
+        "snr_db": 12.0
+      }
+    ],
+    "static_awgn_snr16_J0": [
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 16.0
+      }
+    ],
+    "static_awgn_snr16_J0.05": [
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.05,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.05,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.05,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.05,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.05,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.05,
+        "snr_db": 16.0
+      }
+    ],
+    "static_awgn_snr16_J0.2": [
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.2,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.2,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.2,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.2,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.2,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.2,
+        "snr_db": 16.0
+      }
+    ],
+    "static_awgn_snr4_J0": [
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 4.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 4.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 4.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 4.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 4.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 4.0
+      }
+    ],
+    "static_awgn_snr4_J0.05": [
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.05,
+        "snr_db": 4.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.05,
+        "snr_db": 4.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.05,
+        "snr_db": 4.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.05,
+        "snr_db": 4.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.05,
+        "snr_db": 4.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.05,
+        "snr_db": 4.0
+      }
+    ],
+    "static_awgn_snr4_J0.2": [
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.2,
+        "snr_db": 4.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.2,
+        "snr_db": 4.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.2,
+        "snr_db": 4.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.2,
+        "snr_db": 4.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.2,
+        "snr_db": 4.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.2,
+        "snr_db": 4.0
+      }
+    ],
+    "static_awgn_snr8_J0": [
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 8.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 8.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 8.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 8.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 8.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 8.0
+      }
+    ],
+    "static_awgn_snr8_J0.05": [
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.05,
+        "snr_db": 8.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.05,
+        "snr_db": 8.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.05,
+        "snr_db": 8.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.05,
+        "snr_db": 8.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.05,
+        "snr_db": 8.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.05,
+        "snr_db": 8.0
+      }
+    ],
+    "static_awgn_snr8_J0.2": [
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.2,
+        "snr_db": 8.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.2,
+        "snr_db": 8.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.2,
+        "snr_db": 8.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.2,
+        "snr_db": 8.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.2,
+        "snr_db": 8.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.2,
+        "snr_db": 8.0
+      }
+    ],
+    "static_rayleigh_snr12_J0": [
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.0,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.0,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.0,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.0,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.0,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.0,
+        "snr_db": 12.0
+      }
+    ],
+    "static_rayleigh_snr12_J0.05": [
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.05,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.05,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.05,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.05,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.05,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.05,
+        "snr_db": 12.0
+      }
+    ],
+    "static_rayleigh_snr12_J0.2": [
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.2,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.2,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.2,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.2,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.2,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.2,
+        "snr_db": 12.0
+      }
+    ],
+    "static_rayleigh_snr16_J0": [
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.0,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.0,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.0,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.0,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.0,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.0,
+        "snr_db": 16.0
+      }
+    ],
+    "static_rayleigh_snr16_J0.05": [
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.05,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.05,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.05,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.05,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.05,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.05,
+        "snr_db": 16.0
+      }
+    ],
+    "static_rayleigh_snr16_J0.2": [
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.2,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.2,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.2,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.2,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.2,
+        "snr_db": 16.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.2,
+        "snr_db": 16.0
+      }
+    ],
+    "static_rayleigh_snr4_J0": [
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.0,
+        "snr_db": 4.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.0,
+        "snr_db": 4.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.0,
+        "snr_db": 4.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.0,
+        "snr_db": 4.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.0,
+        "snr_db": 4.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.0,
+        "snr_db": 4.0
+      }
+    ],
+    "static_rayleigh_snr4_J0.05": [
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.05,
+        "snr_db": 4.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.05,
+        "snr_db": 4.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.05,
+        "snr_db": 4.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.05,
+        "snr_db": 4.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.05,
+        "snr_db": 4.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.05,
+        "snr_db": 4.0
+      }
+    ],
+    "static_rayleigh_snr4_J0.2": [
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.2,
+        "snr_db": 4.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.2,
+        "snr_db": 4.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.2,
+        "snr_db": 4.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.2,
+        "snr_db": 4.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.2,
+        "snr_db": 4.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.2,
+        "snr_db": 4.0
+      }
+    ],
+    "static_rayleigh_snr8_J0": [
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.0,
+        "snr_db": 8.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.0,
+        "snr_db": 8.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.0,
+        "snr_db": 8.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.0,
+        "snr_db": 8.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.0,
+        "snr_db": 8.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.0,
+        "snr_db": 8.0
+      }
+    ],
+    "static_rayleigh_snr8_J0.05": [
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.05,
+        "snr_db": 8.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.05,
+        "snr_db": 8.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.05,
+        "snr_db": 8.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.05,
+        "snr_db": 8.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.05,
+        "snr_db": 8.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.05,
+        "snr_db": 8.0
+      }
+    ],
+    "static_rayleigh_snr8_J0.2": [
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.2,
+        "snr_db": 8.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.2,
+        "snr_db": 8.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.2,
+        "snr_db": 8.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.2,
+        "snr_db": 8.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.2,
+        "snr_db": 8.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.2,
+        "snr_db": 8.0
+      }
+    ],
+    "step_fade": [
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.0,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.0,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.0,
+        "snr_db": 12.0
+      },
+      {
+        "channel": "RAYLEIGH",
+        "fading_mode": "block",
+        "interference_power": 0.0,
+        "snr_db": 12.0
+      }
+    ],
+    "step_jammer": [
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 14.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 14.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.3,
+        "snr_db": 14.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.3,
+        "snr_db": 14.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 14.0
+      },
+      {
+        "channel": "AWGN",
+        "fading_mode": "none",
+        "interference_power": 0.0,
+        "snr_db": 14.0
+      }
+    ]
+  },
+  "created": "2026-10-22T16:24:49+00:00",
+  "data_class": "GNU Radio software simulation (no SDR hardware, no over-the-air)",
+  "episodes": 6,
+  "executable": "C:\\Users\\HP\\radioconda\\envs\\cognitwin-gr\\python.exe",
+  "gnuradio_version": "3.10.12.0",
+  "n_symbols": 4096,
+  "policies": [
+    "acwra",
+    "no_adaptation",
+    "fixed_BPSK",
+    "fixed_QPSK",
+    "fixed_OFDM-QPSK",
+    "sinr_threshold"
+  ],
+  "protocol": "GR-CL-1 (episode-based, paired, condition-level statistics)",
+  "python": "3.12.15",
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ]
+}

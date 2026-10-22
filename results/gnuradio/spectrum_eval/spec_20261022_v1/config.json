@@ -1,0 +1,33 @@
+{
+  "commit": "371b14d",
+  "created": "2026-10-22T16:07:16+00:00",
+  "data_class": "GNU Radio software simulation (no SDR hardware, no over-the-air)",
+  "executable": "C:\\Users\\HP\\radioconda\\envs\\cognitwin-gr\\python.exe",
+  "gnuradio_version": "3.10.12.0",
+  "impairments": {
+    "awgn": {},
+    "block_rayleigh": {
+      "channel": "RAYLEIGH",
+      "fading_mode": "block"
+    },
+    "jammer": {
+      "interference_power": 0.1
+    },
+    "tv_rayleigh": {
+      "channel": "RAYLEIGH",
+      "doppler_fdts": 0.0001,
+      "fading_mode": "time_varying"
+    }
+  },
+  "python": "3.12.15",
+  "seed_base": 500000,
+  "seeds": 4,
+  "snrs": [
+    -5.0,
+    0.0,
+    5.0,
+    10.0,
+    15.0,
+    20.0
+  ]
+}

@@ -1,0 +1,22 @@
+COGNITWIN-SDR: TASK 5.1 MODEL AUDIT & STRESS TEST REPORT
+======================================================================
+
+1. TOP 3 MOST IMPORTANT FEATURES
+--------------------------------------------------
+   1. bandwidth_3db_hz       : 11.42% MDI Importance
+   2. phase_std              : 9.73% MDI Importance
+   3. spectral_entropy       : 9.61% MDI Importance
+
+2. FEATURE ABLATION RESULTS
+--------------------------------------------------
+   Time/IQ Features Only (13 features) : 97.50% Accuracy
+   Frequency Features Only (4 features) : 82.33% Accuracy
+
+3. RF IMPAIRMENT STRESS TEST RESULTS
+--------------------------------------------------
+   Impairments Applied : Frequency Offset (±5%), Random Phase Shift [0, 2π), Rayleigh Fading
+   Stress Test Accuracy: 44.50%
+
+4. SCIENTIFIC CONCLUSION
+--------------------------------------------------
+   The V1 baseline model achieved 100% accuracy due to ideal synthetic conditions with zero carrier frequency drift, ideal phase synchronization, and absence of fading multipath. Under realistic RF impairments (±5% frequency offsets, random phase shifts, and Rayleigh fading), classification accuracy degrades to 44.50%, demonstrating that ideal synthetic training creates overfitted feature decision boundaries that require robust impairment augmentation for real-world deployment.

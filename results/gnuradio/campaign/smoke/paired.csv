@@ -1,0 +1,16 @@
+a,b,ci95_high,ci95_low,losses,mean_diff,metric,n_conditions,nonzero_pairs,ties,wilcoxon_p,wins
+acwra,no_adaptation,0.0,0.0,0,0.0,goodput_bps,2,0,2,nan,0
+acwra,no_adaptation,0.0,0.0,0,0.0,ber,2,0,2,nan,0
+acwra,no_adaptation,0.0,0.0,0,0.0,spectral_efficiency,2,0,2,nan,0
+acwra,fixed_BPSK,63541.66666666667,-64583.33333333333,1,-520.8333333333285,goodput_bps,2,2,0,nan,1
+acwra,fixed_BPSK,0.01318359375,0.0118408203125,0,0.01251220703125,ber,2,2,0,nan,2
+acwra,fixed_BPSK,0.470679012345679,-0.4783950617283951,1,-0.003858024691358042,spectral_efficiency,2,2,0,nan,1
+acwra,fixed_QPSK,0.0,0.0,0,0.0,goodput_bps,2,0,2,nan,0
+acwra,fixed_QPSK,0.0,0.0,0,0.0,ber,2,0,2,nan,0
+acwra,fixed_QPSK,0.0,0.0,0,0.0,spectral_efficiency,2,0,2,nan,0
+acwra,fixed_OFDM-QPSK,26666.66666666667,7708.333333333333,0,17187.500000000004,goodput_bps,2,2,0,nan,2
+acwra,fixed_OFDM-QPSK,0.00048828125,0.0003458658854166661,0,0.00041707356770833304,ber,2,2,0,nan,2
+acwra,fixed_OFDM-QPSK,0.05277777777777777,-0.07901234567901239,1,-0.013117283950617308,spectral_efficiency,2,2,0,nan,1
+acwra,sinr_threshold,14583.333333333343,-57291.66666666667,1,-21354.166666666664,goodput_bps,2,2,0,nan,1
+acwra,sinr_threshold,0.00987606956845238,0.005110677083333334,0,0.007493373325892857,ber,2,2,0,nan,2
+acwra,sinr_threshold,0.10802469135802462,-0.42438271604938277,1,-0.15817901234567908,spectral_efficiency,2,2,0,nan,1

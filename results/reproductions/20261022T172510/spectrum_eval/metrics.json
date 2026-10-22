@@ -1,0 +1,690 @@
+{
+  "n_windows": 5760,
+  "seed_range": [
+    1000001,
+    1006480
+  ],
+  "per_cell": 40,
+  "overall_accuracy": 0.9442708333333333,
+  "unknown_rate": 0.025520833333333333,
+  "ece_known": 0.01708355603064317,
+  "per_class": {
+    "AM-DSB-SC": {
+      "precision": 0.985734664764622,
+      "recall": 0.9597222222222223,
+      "f1": 0.9725545390570022,
+      "unknown_rate": 0.027777777777777776
+    },
+    "AM-DSB-TC": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "unknown_rate": 0.0
+    },
+    "FM": {
+      "precision": 0.9869565217391304,
+      "recall": 0.9458333333333333,
+      "f1": 0.9659574468085107,
+      "unknown_rate": 0.04027777777777778
+    },
+    "ASK": {
+      "precision": 0.975,
+      "recall": 0.975,
+      "f1": 0.975,
+      "unknown_rate": 0.013888888888888888
+    },
+    "FSK": {
+      "precision": 0.9880059970014993,
+      "recall": 0.9152777777777777,
+      "f1": 0.950252343186734,
+      "unknown_rate": 0.059722222222222225
+    },
+    "BPSK": {
+      "precision": 0.9986111111111111,
+      "recall": 0.9986111111111111,
+      "f1": 0.9986111111111111,
+      "unknown_rate": 0.0
+    },
+    "QPSK": {
+      "precision": 0.984822934232715,
+      "recall": 0.8111111111111111,
+      "f1": 0.8895658796648895,
+      "unknown_rate": 0.025
+    },
+    "OFDM-QPSK": {
+      "precision": 0.8516209476309227,
+      "recall": 0.9486111111111111,
+      "f1": 0.8975032851511169,
+      "unknown_rate": 0.0375
+    }
+  },
+  "accuracy_by_sinr_impairment": {
+    "-5dB/awgn": 0.71875,
+    "-5dB/block_fade": 0.759375,
+    "-5dB/jammer": 0.734375,
+    "0dB/awgn": 0.95625,
+    "0dB/block_fade": 0.95625,
+    "0dB/jammer": 0.965625,
+    "5dB/awgn": 0.99375,
+    "5dB/block_fade": 0.9875,
+    "5dB/jammer": 0.984375,
+    "10dB/awgn": 0.984375,
+    "10dB/block_fade": 0.990625,
+    "10dB/jammer": 0.996875,
+    "15dB/awgn": 0.99375,
+    "15dB/block_fade": 0.996875,
+    "15dB/jammer": 0.99375,
+    "20dB/awgn": 0.990625,
+    "20dB/block_fade": 0.996875,
+    "20dB/jammer": 0.996875
+  },
+  "confusion_labels": [
+    "AM-DSB-SC",
+    "AM-DSB-TC",
+    "FM",
+    "ASK",
+    "FSK",
+    "BPSK",
+    "QPSK",
+    "OFDM-QPSK",
+    "UNKNOWN"
+  ],
+  "confusion": [
+    [
+      691,
+      0,
+      9,
+      0,
+      0,
+      0,
+      0,
+      0,
+      20
+    ],
+    [
+      0,
+      720,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      10,
+      0,
+      681,
+      0,
+      0,
+      0,
+      0,
+      0,
+      29
+    ],
+    [
+      0,
+      0,
+      0,
+      702,
+      8,
+      0,
+      0,
+      0,
+      10
+    ],
+    [
+      0,
+      0,
+      0,
+      18,
+      659,
+      0,
+      0,
+      0,
+      43
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      719,
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      584,
+      118,
+      18
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      9,
+      683,
+      27
+    ]
+  ],
+  "snr_estimation": [
+    {
+      "type": "BPSK",
+      "sinr_db": -5.0,
+      "impairment": "awgn",
+      "n": 40,
+      "resolved_frac": 0.0,
+      "bias_db": NaN,
+      "mae_db": NaN
+    },
+    {
+      "type": "BPSK",
+      "sinr_db": -5.0,
+      "impairment": "block_fade",
+      "n": 40,
+      "resolved_frac": 0.0,
+      "bias_db": NaN,
+      "mae_db": NaN
+    },
+    {
+      "type": "BPSK",
+      "sinr_db": -5.0,
+      "impairment": "jammer",
+      "n": 40,
+      "resolved_frac": 0.0,
+      "bias_db": NaN,
+      "mae_db": NaN
+    },
+    {
+      "type": "BPSK",
+      "sinr_db": 0.0,
+      "impairment": "awgn",
+      "n": 40,
+      "resolved_frac": 0.375,
+      "bias_db": 1.0700368505822329,
+      "mae_db": 1.0700368505822329
+    },
+    {
+      "type": "BPSK",
+      "sinr_db": 0.0,
+      "impairment": "block_fade",
+      "n": 40,
+      "resolved_frac": 0.35,
+      "bias_db": 0.7582354699476765,
+      "mae_db": 0.7582354699476765
+    },
+    {
+      "type": "BPSK",
+      "sinr_db": 0.0,
+      "impairment": "jammer",
+      "n": 40,
+      "resolved_frac": 0.325,
+      "bias_db": 0.8547052707114116,
+      "mae_db": 0.8547052707114116
+    },
+    {
+      "type": "BPSK",
+      "sinr_db": 5.0,
+      "impairment": "awgn",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": 0.09660647586285169,
+      "mae_db": 0.39239359131338925
+    },
+    {
+      "type": "BPSK",
+      "sinr_db": 5.0,
+      "impairment": "block_fade",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": 0.06952842794478284,
+      "mae_db": 0.4236057891132864
+    },
+    {
+      "type": "BPSK",
+      "sinr_db": 5.0,
+      "impairment": "jammer",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": -0.05420353137009759,
+      "mae_db": 0.3610015214453849
+    },
+    {
+      "type": "BPSK",
+      "sinr_db": 10.0,
+      "impairment": "awgn",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": 0.01197136526888296,
+      "mae_db": 0.31082167769846963
+    },
+    {
+      "type": "BPSK",
+      "sinr_db": 10.0,
+      "impairment": "block_fade",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": -0.035429938712562725,
+      "mae_db": 0.2685891004642395
+    },
+    {
+      "type": "BPSK",
+      "sinr_db": 10.0,
+      "impairment": "jammer",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": 0.05812212371878829,
+      "mae_db": 0.21918412514949112
+    },
+    {
+      "type": "BPSK",
+      "sinr_db": 15.0,
+      "impairment": "awgn",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": -0.016829339044065916,
+      "mae_db": 0.23547544480998908
+    },
+    {
+      "type": "BPSK",
+      "sinr_db": 15.0,
+      "impairment": "block_fade",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": -0.01272556397086273,
+      "mae_db": 0.2429320940456508
+    },
+    {
+      "type": "BPSK",
+      "sinr_db": 15.0,
+      "impairment": "jammer",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": 0.005941006941102245,
+      "mae_db": 0.16660498269862983
+    },
+    {
+      "type": "BPSK",
+      "sinr_db": 20.0,
+      "impairment": "awgn",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": -0.000812604724882604,
+      "mae_db": 0.21636437731750124
+    },
+    {
+      "type": "BPSK",
+      "sinr_db": 20.0,
+      "impairment": "block_fade",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": -0.008639046478557687,
+      "mae_db": 0.2088670358722334
+    },
+    {
+      "type": "BPSK",
+      "sinr_db": 20.0,
+      "impairment": "jammer",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": 0.02826730707862133,
+      "mae_db": 0.2497917004599426
+    },
+    {
+      "type": "OFDM-QPSK",
+      "sinr_db": -5.0,
+      "impairment": "awgn",
+      "n": 40,
+      "resolved_frac": 0.0,
+      "bias_db": NaN,
+      "mae_db": NaN
+    },
+    {
+      "type": "OFDM-QPSK",
+      "sinr_db": -5.0,
+      "impairment": "block_fade",
+      "n": 40,
+      "resolved_frac": 0.0,
+      "bias_db": NaN,
+      "mae_db": NaN
+    },
+    {
+      "type": "OFDM-QPSK",
+      "sinr_db": -5.0,
+      "impairment": "jammer",
+      "n": 40,
+      "resolved_frac": 0.0,
+      "bias_db": NaN,
+      "mae_db": NaN
+    },
+    {
+      "type": "OFDM-QPSK",
+      "sinr_db": 0.0,
+      "impairment": "awgn",
+      "n": 40,
+      "resolved_frac": 0.725,
+      "bias_db": -0.047294353839632076,
+      "mae_db": 0.7139210545113998
+    },
+    {
+      "type": "OFDM-QPSK",
+      "sinr_db": 0.0,
+      "impairment": "block_fade",
+      "n": 40,
+      "resolved_frac": 0.775,
+      "bias_db": 0.3179575199327582,
+      "mae_db": 0.7322936545520623
+    },
+    {
+      "type": "OFDM-QPSK",
+      "sinr_db": 0.0,
+      "impairment": "jammer",
+      "n": 40,
+      "resolved_frac": 0.85,
+      "bias_db": 0.3133128496305199,
+      "mae_db": 0.6785682953344782
+    },
+    {
+      "type": "OFDM-QPSK",
+      "sinr_db": 5.0,
+      "impairment": "awgn",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": -0.1354335480898746,
+      "mae_db": 0.48284245856943253
+    },
+    {
+      "type": "OFDM-QPSK",
+      "sinr_db": 5.0,
+      "impairment": "block_fade",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": 0.11318684944638871,
+      "mae_db": 0.5218421664508801
+    },
+    {
+      "type": "OFDM-QPSK",
+      "sinr_db": 5.0,
+      "impairment": "jammer",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": 0.05390692259347949,
+      "mae_db": 0.4539330834576646
+    },
+    {
+      "type": "OFDM-QPSK",
+      "sinr_db": 10.0,
+      "impairment": "awgn",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": -0.11187678685127792,
+      "mae_db": 0.41253757243597794
+    },
+    {
+      "type": "OFDM-QPSK",
+      "sinr_db": 10.0,
+      "impairment": "block_fade",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": 0.048942754260096644,
+      "mae_db": 0.3180190395743302
+    },
+    {
+      "type": "OFDM-QPSK",
+      "sinr_db": 10.0,
+      "impairment": "jammer",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": -0.2950450999428033,
+      "mae_db": 0.6829178948347068
+    },
+    {
+      "type": "OFDM-QPSK",
+      "sinr_db": 15.0,
+      "impairment": "awgn",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": -0.7472747044212273,
+      "mae_db": 1.0974350959117596
+    },
+    {
+      "type": "OFDM-QPSK",
+      "sinr_db": 15.0,
+      "impairment": "block_fade",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": -0.49039729820850814,
+      "mae_db": 0.8686138978655963
+    },
+    {
+      "type": "OFDM-QPSK",
+      "sinr_db": 15.0,
+      "impairment": "jammer",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": -0.30856726614067853,
+      "mae_db": 0.6516251479360449
+    },
+    {
+      "type": "OFDM-QPSK",
+      "sinr_db": 20.0,
+      "impairment": "awgn",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": -0.7160986192558702,
+      "mae_db": 1.238535786458105
+    },
+    {
+      "type": "OFDM-QPSK",
+      "sinr_db": 20.0,
+      "impairment": "block_fade",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": -0.36946780238180593,
+      "mae_db": 0.9859828732829584
+    },
+    {
+      "type": "OFDM-QPSK",
+      "sinr_db": 20.0,
+      "impairment": "jammer",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": -0.5422744348936858,
+      "mae_db": 0.8564246887944954
+    },
+    {
+      "type": "QPSK",
+      "sinr_db": -5.0,
+      "impairment": "awgn",
+      "n": 40,
+      "resolved_frac": 0.0,
+      "bias_db": NaN,
+      "mae_db": NaN
+    },
+    {
+      "type": "QPSK",
+      "sinr_db": -5.0,
+      "impairment": "block_fade",
+      "n": 40,
+      "resolved_frac": 0.0,
+      "bias_db": NaN,
+      "mae_db": NaN
+    },
+    {
+      "type": "QPSK",
+      "sinr_db": -5.0,
+      "impairment": "jammer",
+      "n": 40,
+      "resolved_frac": 0.0,
+      "bias_db": NaN,
+      "mae_db": NaN
+    },
+    {
+      "type": "QPSK",
+      "sinr_db": 0.0,
+      "impairment": "awgn",
+      "n": 40,
+      "resolved_frac": 0.4,
+      "bias_db": 0.8999182111241436,
+      "mae_db": 0.8999182111241436
+    },
+    {
+      "type": "QPSK",
+      "sinr_db": 0.0,
+      "impairment": "block_fade",
+      "n": 40,
+      "resolved_frac": 0.325,
+      "bias_db": 0.9012118762845701,
+      "mae_db": 0.9012118762845701
+    },
+    {
+      "type": "QPSK",
+      "sinr_db": 0.0,
+      "impairment": "jammer",
+      "n": 40,
+      "resolved_frac": 0.375,
+      "bias_db": 0.8940590277398381,
+      "mae_db": 0.8940590277398381
+    },
+    {
+      "type": "QPSK",
+      "sinr_db": 5.0,
+      "impairment": "awgn",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": -0.010729423580594722,
+      "mae_db": 0.358436713611454
+    },
+    {
+      "type": "QPSK",
+      "sinr_db": 5.0,
+      "impairment": "block_fade",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": -0.0192194241244803,
+      "mae_db": 0.3225025236338024
+    },
+    {
+      "type": "QPSK",
+      "sinr_db": 5.0,
+      "impairment": "jammer",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": 0.0356540829228724,
+      "mae_db": 0.35270328872630674
+    },
+    {
+      "type": "QPSK",
+      "sinr_db": 10.0,
+      "impairment": "awgn",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": 0.00979382147851986,
+      "mae_db": 0.2524517595470347
+    },
+    {
+      "type": "QPSK",
+      "sinr_db": 10.0,
+      "impairment": "block_fade",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": 0.012357760818537056,
+      "mae_db": 0.27825222599226596
+    },
+    {
+      "type": "QPSK",
+      "sinr_db": 10.0,
+      "impairment": "jammer",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": -0.027353874046077344,
+      "mae_db": 0.2724960387781413
+    },
+    {
+      "type": "QPSK",
+      "sinr_db": 15.0,
+      "impairment": "awgn",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": 0.017351171221960636,
+      "mae_db": 0.2507283191540851
+    },
+    {
+      "type": "QPSK",
+      "sinr_db": 15.0,
+      "impairment": "block_fade",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": 0.1210410515800806,
+      "mae_db": 0.2637348682119686
+    },
+    {
+      "type": "QPSK",
+      "sinr_db": 15.0,
+      "impairment": "jammer",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": -0.004660820022522794,
+      "mae_db": 0.2493002465418869
+    },
+    {
+      "type": "QPSK",
+      "sinr_db": 20.0,
+      "impairment": "awgn",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": 0.016956848877496267,
+      "mae_db": 0.197286916604049
+    },
+    {
+      "type": "QPSK",
+      "sinr_db": 20.0,
+      "impairment": "block_fade",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": -0.008076260777554366,
+      "mae_db": 0.2374688517005364
+    },
+    {
+      "type": "QPSK",
+      "sinr_db": 20.0,
+      "impairment": "jammer",
+      "n": 40,
+      "resolved_frac": 1.0,
+      "bias_db": -0.06201388573646431,
+      "mae_db": 0.2053936203929747
+    }
+  ],
+  "false_snr_drop_rate_stationary": {
+    "BPSK@-5dB": 0.0,
+    "BPSK@0dB": 0.0,
+    "BPSK@5dB": 0.0,
+    "BPSK@10dB": 0.0,
+    "BPSK@15dB": 0.0,
+    "BPSK@20dB": 0.0,
+    "QPSK@-5dB": 0.0,
+    "QPSK@0dB": 0.0,
+    "QPSK@5dB": 0.0,
+    "QPSK@10dB": 0.0,
+    "QPSK@15dB": 0.0,
+    "QPSK@20dB": 0.0,
+    "OFDM-QPSK@-5dB": 0.0,
+    "OFDM-QPSK@0dB": 0.0,
+    "OFDM-QPSK@5dB": 0.0,
+    "OFDM-QPSK@10dB": 0.0,
+    "OFDM-QPSK@15dB": 0.07692307692307693,
+    "OFDM-QPSK@20dB": 0.07692307692307693
+  }
+}

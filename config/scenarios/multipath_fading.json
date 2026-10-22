@@ -1,0 +1,31 @@
+{
+  "name": "Multipath Fading Scenario",
+  "description": "Transitions from clean AWGN to Rician fading and severe Rayleigh fading.",
+  "duration_seconds": 3.0,
+  "keyframes": [
+    {
+      "time_s": 0.0,
+      "modulation": "QPSK",
+      "snr_db": 20.0,
+      "channel_type": "awgn",
+      "interference_type": "none",
+      "interference_power": 0.0
+    },
+    {
+      "time_s": 1.0,
+      "modulation": "QPSK",
+      "snr_db": 15.0,
+      "channel_type": "rician",
+      "interference_type": "none",
+      "interference_power": 0.0
+    },
+    {
+      "time_s": 2.0,
+      "modulation": "QPSK",
+      "snr_db": 8.0,
+      "channel_type": "rayleigh",
+      "interference_type": "none",
+      "interference_power": 0.0
+    }
+  ]
+}

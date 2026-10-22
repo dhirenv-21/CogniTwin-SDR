@@ -1,0 +1,39 @@
+{
+  "run_id": "repro_of_run_20261022_v1",
+  "git_commit": "bae5701",
+  "dt_s": 0.1,
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "policies": [
+    "acwra",
+    "fixed_BPSK",
+    "fixed_QPSK",
+    "fixed_OFDM-QPSK",
+    "snr_threshold",
+    "oracle"
+  ],
+  "scenarios": [
+    "awgn_degradation",
+    "broadband_jamming",
+    "clear_channel",
+    "dynamic_combat_environment",
+    "multipath_fading",
+    "swept_jamming"
+  ],
+  "n_steps_total": 5700,
+  "n_episodes": 180,
+  "wall_seconds": 35.9,
+  "acwra_weights": {
+    "w_t": 0.4,
+    "w_se": 0.2,
+    "w_b": 0.6,
+    "lambda_c": 1.0
+  },
+  "snr_threshold_rule": "BPSK if snr_db < 8 or interference_power > 0.5 else QPSK",
+  "caveat": "outcomes from the same link model as the twin's sandbox: decision logic only"
+}

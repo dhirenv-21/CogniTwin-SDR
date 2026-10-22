@@ -1,0 +1,24 @@
+COGNITWIN-SDR: COUNTERFACTUAL SANDBOX EVALUATION REPORT
+================================================================================
+
+1. EVALUATION BLOCK 1: SEVERE BROADBAND JAMMING (SNR = 3.0 dB, Interf Power = 2.5)
+--------------------------------------------------------------------------------
+ STRATEGY               | PRED BER     | PKT LOSS     | THROUGHPUT       | LATENCY     
+--------------------------------------------------------------------------------
+ Keep Current (QPSK)    | 0.5000       | 100.0      % | 0.0           kbps | 54.5       ms
+ BPSK                   | 0.4551       | 100.0      % | 0.0           kbps | 54.5       ms
+ QPSK                   | 0.4551       | 100.0      % | 0.0           kbps | 54.5       ms
+ OFDM-QPSK              | 0.4944       | 100.0      % | 0.0           kbps | 54.5       ms
+
+
+2. EVALUATION BLOCK 2: MODERATE INTERFERENCE (SNR = 8.0 dB, Interf Power = 0.4)
+--------------------------------------------------------------------------------
+ STRATEGY               | PRED BER     | PKT LOSS     | THROUGHPUT       | LATENCY     
+--------------------------------------------------------------------------------
+ Keep Current (QPSK)    | 0.0660       | 100.0      % | 0.0           kbps | 23.0       ms
+ BPSK                   | 0.0602       | 100.0      % | 0.0           kbps | 23.0       ms
+ QPSK                   | 0.0602       | 100.0      % | 0.0           kbps | 23.0       ms
+ OFDM-QPSK              | 0.0606       | 100.0      % | 0.0           kbps | 23.0       ms
+
+
+SANDBOX ISOLATION VERIFICATION: Environment clock = 0.00 s (0.0s leaked).

@@ -1,0 +1,24 @@
+{
+  "dt_s": 0.1,
+  "horizons": [
+    1,
+    2,
+    5
+  ],
+  "noise_db": [
+    0.0,
+    1.0
+  ],
+  "seeds": 5,
+  "env_seed": 42,
+  "history_window": 5,
+  "scenarios": [
+    "awgn_degradation",
+    "broadband_jamming",
+    "clear_channel",
+    "dynamic_combat_environment",
+    "multipath_fading",
+    "swept_jamming",
+    "synthetic_ramp"
+  ]
+}

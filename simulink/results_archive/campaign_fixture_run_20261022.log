@@ -1,0 +1,42 @@
+==============================================================================
+COGNITWIN-SDR: SIMULINK -> ACWRA VALIDATION CAMPAIGN
+==============================================================================
+Source : FIXTURE   (Python reference PHY fixtures - explicitly NOT Simulink)
+Set    : all
+Symbols: non-repeating random stream
+
+Running 125 pipeline cases (source=fixture)...
+  10/125 cases done
+  20/125 cases done
+  30/125 cases done
+  40/125 cases done
+  50/125 cases done
+  60/125 cases done
+  70/125 cases done
+  80/125 cases done
+  90/125 cases done
+  100/125 cases done
+  110/125 cases done
+  120/125 cases done
+  125/125 cases done
+
+------------------------------------------------------------------------------
+CAMPAIGN RESULTS
+------------------------------------------------------------------------------
+  PASS              : 398
+  STATISTICAL PASS  : 0
+  INCONCLUSIVE      : 0
+  FAIL              : 0
+  NOT RUN           : 4
+  TOTAL             : 402
+------------------------------------------------------------------------------
+Results table : simulink\results\campaign_report\results_fixture.csv
+Summary       : simulink\results\campaign_report\summary_fixture.md
+Plot          : simulink\results\campaign_report\iq_diagnostics_fixture.png
+Plot          : simulink\results\campaign_report\ber_vs_snr_fixture.png
+Plot          : simulink\results\campaign_report\sir_vs_interference_fixture.png
+Plot          : simulink\results\campaign_report\confidence_vs_snr_fixture.png
+Plot          : simulink\results\campaign_report\utility_comparison_fixture.png
+Plot          : simulink\results\campaign_report\selected_strategy_fixture.png
+==============================================================================
+exit 0

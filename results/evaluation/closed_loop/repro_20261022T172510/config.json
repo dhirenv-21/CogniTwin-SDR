@@ -1,0 +1,68 @@
+{
+  "run_id": "repro_20261022T172510",
+  "protocol": "CL-2",
+  "git_commit": "3c9752c",
+  "dt_s": 0.1,
+  "suites": {
+    "original": {
+      "conditions": [
+        "awgn_degradation",
+        "broadband_jamming",
+        "clear_channel",
+        "dynamic_combat_environment",
+        "multipath_fading",
+        "swept_jamming"
+      ],
+      "seeds": [
+        1,
+        2
+      ]
+    }
+  },
+  "sweep_grid": {
+    "channels": [
+      "awgn",
+      "rayleigh"
+    ],
+    "snr_db": [
+      6.0,
+      12.0,
+      18.0
+    ],
+    "interference": [
+      0.0,
+      0.03,
+      0.1,
+      0.3,
+      1.0
+    ],
+    "duration_s": 2.0
+  },
+  "policies": [
+    "acwra",
+    "acwra_no_prediction",
+    "acwra_no_history",
+    "acwra_no_confidence",
+    "acwra_all_candidates",
+    "fixed_BPSK",
+    "fixed_QPSK",
+    "fixed_OFDM-QPSK",
+    "snr_threshold",
+    "sinr_threshold",
+    "oracle"
+  ],
+  "n_steps_total": 4180,
+  "n_episodes": 132,
+  "wall_seconds": 61.2,
+  "start_utc": "2026-10-22T11:58:44Z",
+  "acwra_weights": {
+    "w_t": 0.4,
+    "w_se": 0.2,
+    "w_b": 0.6,
+    "lambda_c": 1.0
+  },
+  "python": "3.10.11",
+  "numpy": "2.2.6",
+  "environment": "Python VirtualRFEnvironment + link_model (NOT Simulink)",
+  "caveat": "sandbox plans with the expected fade, steps realise one fade per block; decision logic only, not physical-layer performance"
+}

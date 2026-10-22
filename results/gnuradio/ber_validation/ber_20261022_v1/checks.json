@@ -1,0 +1,20 @@
+{
+  "ber_points_judged": 18,
+  "ber_points_pass": 18,
+  "different_seed_independent": true,
+  "different_seed_noise_corr": 0.009036630212578993,
+  "jammer_measured_power": 0.10025513937195529,
+  "rayleigh_time_varying_ber_vs_conditional_theory": [
+    0.0035400390625,
+    0.002836777196500803
+  ],
+  "rayleigh_time_varying_gain_capture_ok": true,
+  "rayleigh_time_varying_gain_std": 0.45307580059903196,
+  "rician_time_varying_ber_vs_conditional_theory": [
+    0.005126953125,
+    0.005374867366871356
+  ],
+  "rician_time_varying_gain_capture_ok": true,
+  "rician_time_varying_gain_std": 0.4091513943853951,
+  "same_seed_identical": true
+}

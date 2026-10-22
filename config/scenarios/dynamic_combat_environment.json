@@ -1,0 +1,39 @@
+{
+  "name": "Dynamic Combat Scenario",
+  "description": "Multi-stage tactical environment (Normal -> Interference -> Fading -> Severe Jamming).",
+  "duration_seconds": 4.0,
+  "keyframes": [
+    {
+      "time_s": 0.0,
+      "modulation": "QPSK",
+      "snr_db": 20.0,
+      "channel_type": "awgn",
+      "interference_type": "none",
+      "interference_power": 0.0
+    },
+    {
+      "time_s": 1.0,
+      "modulation": "QPSK",
+      "snr_db": 15.0,
+      "channel_type": "awgn",
+      "interference_type": "narrowband",
+      "interference_power": 0.4
+    },
+    {
+      "time_s": 2.0,
+      "modulation": "QPSK",
+      "snr_db": 8.0,
+      "channel_type": "rayleigh",
+      "interference_type": "broadband",
+      "interference_power": 1.5
+    },
+    {
+      "time_s": 3.0,
+      "modulation": "QPSK",
+      "snr_db": 2.0,
+      "channel_type": "rayleigh",
+      "interference_type": "broadband",
+      "interference_power": 4.0
+    }
+  ]
+}

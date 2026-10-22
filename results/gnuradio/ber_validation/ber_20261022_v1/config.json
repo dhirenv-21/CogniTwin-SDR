@@ -1,0 +1,36 @@
+{
+  "commit": "c03911d",
+  "created": "2026-10-22T14:28:20+00:00",
+  "data_class": "GNU Radio software simulation (no SDR hardware, no over-the-air)",
+  "executable": "C:\\Users\\HP\\radioconda\\envs\\cognitwin-gr\\python.exe",
+  "gnuradio_version": "3.10.12.0",
+  "grid": {
+    "BPSK": [
+      -2.0,
+      0.0,
+      2.0,
+      4.0,
+      6.0,
+      8.0
+    ],
+    "OFDM-QPSK": [
+      0.0,
+      2.0,
+      4.0,
+      6.0,
+      8.0,
+      10.0
+    ],
+    "QPSK": [
+      0.0,
+      2.0,
+      4.0,
+      6.0,
+      8.0,
+      10.0
+    ]
+  },
+  "n_symbols": 65536,
+  "python": "3.12.15",
+  "seeds": 3
+}

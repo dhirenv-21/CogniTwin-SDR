@@ -1,0 +1,13 @@
+ACWRA DECISION TRACE (t = 0.04 s)
+===========================================================================
+• Selected Strategy : 'Keep Current' (Expected Utility: +0.0000)
+• Agent Evidence    : Risk Score R = 0.25 | Confidence C = 100.0%
+
+• Candidate Utility Scoring Breakdown:
+---------------------------------------------------------------------------
+ STRATEGY             | PRED BER   | T_NORM   | SE_NORM  | K_C    | UTILITY   
+---------------------------------------------------------------------------
+==> Keep Current      | 0.0117     | 0.00     | 0.00     | 0.25   | +0.0000   
+---------------------------------------------------------------------------
+• Rationale & Penalty Analysis:
+  - Winner 'Keep Current': Matched the minimum predicted BER while providing higher theoretical spectral efficiency.

@@ -1,0 +1,305 @@
+options:
+  parameters:
+    author: CogniTwin-SDR
+    category: '[GRC Hier Blocks]'
+    description: 'Visual demo of the CogniTwin-SDR GNU Radio PHY (QPSK, RRC, AWGN, Gaussian jammer). Same block chain and parameters as src/gnuradio_phy/flowgraph.py; decisions come from experiments/gnuradio_demo.py.'
+    generate_options: qt_gui
+    id: cognitwin_phy_demo
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: CogniTwin-SDR GNU Radio PHY demo
+    window_size: (1000,1000)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: sps
+  id: variable
+  parameters:
+    comment: samples per symbol (flowgraph.py default)
+    value: '4'
+  states:
+    coordinate: [200, 12]
+    rotation: 0
+    state: enabled
+- name: symbol_rate
+  id: variable
+  parameters:
+    comment: exported samples per second (config.SYMBOL_RATE)
+    value: '100000'
+  states:
+    coordinate: [288, 12]
+    rotation: 0
+    state: enabled
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: symbol_rate * sps
+  states:
+    coordinate: [400, 12]
+    rotation: 0
+    state: enabled
+- name: rrc_taps
+  id: variable
+  parameters:
+    comment: unit-energy RRC, rolloff 0.35, span 11 symbols (flowgraph.rrc_taps)
+    value: '[t / math.sqrt(sum(x * x for x in firdes.root_raised_cosine(1.0, sps, 1.0, 0.35, 11 * sps + 1))) for t in firdes.root_raised_cosine(1.0, sps, 1.0, 0.35, 11 * sps + 1)]'
+  states:
+    coordinate: [520, 12]
+    rotation: 0
+    state: enabled
+- name: snr_db
+  id: variable_qtgui_range
+  parameters:
+    comment: Es/N0 per symbol, dB
+    gui_hint: 0,0,1,1
+    label: Es/N0 [dB]
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '-5'
+    step: '0.5'
+    stop: '30'
+    value: '10'
+    widget: counter_slider
+  states:
+    coordinate: [200, 92]
+    rotation: 0
+    state: enabled
+- name: jammer_power
+  id: variable_qtgui_range
+  parameters:
+    comment: Gaussian jammer power J (relative to the unit-energy symbol)
+    gui_hint: 0,1,1,1
+    label: Jammer J
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '0'
+    step: '0.01'
+    stop: '1'
+    value: '0'
+    widget: counter_slider
+  states:
+    coordinate: [360, 92]
+    rotation: 0
+    state: enabled
+- name: import_math
+  id: import
+  parameters:
+    alias: ''
+    comment: ''
+    imports: import math
+  states:
+    coordinate: [688, 12]
+    rotation: 0
+    state: enabled
+- name: random_symbols
+  id: analog_random_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: QPSK symbol indices 0..3
+    max: '4'
+    maxoutbuf: '0'
+    min: '0'
+    minoutbuf: '0'
+    num_samps: '100000'
+    repeat: 'True'
+    type: byte
+  states:
+    coordinate: [16, 220]
+    rotation: 0
+    state: enabled
+- name: qpsk_map
+  id: digital_chunks_to_symbols_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: same points as receiver.constellation_points('QPSK')
+    dimension: '1'
+    in_type: byte
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_ports: '1'
+    out_type: complex
+    symbol_table: '[(-1-1j)/math.sqrt(2), (-1+1j)/math.sqrt(2), (1-1j)/math.sqrt(2), (1+1j)/math.sqrt(2)]'
+  states:
+    coordinate: [208, 220]
+    rotation: 0
+    state: enabled
+- name: rrc_tx
+  id: interp_fir_filter_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: pulse shaping
+    interp: sps
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_delay: '0'
+    taps: rrc_taps
+    type: ccf
+  states:
+    coordinate: [416, 220]
+    rotation: 0
+    state: enabled
+- name: throttle
+  id: blocks_throttle
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: GUI pacing only (not part of the measurement flowgraph)
+    ignoretag: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samples_per_second: samp_rate
+    type: complex
+    vlen: '1'
+  states:
+    coordinate: [600, 220]
+    rotation: 0
+    state: enabled
+- name: noise
+  id: analog_noise_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    amp: math.sqrt(10 ** (-snr_db / 10))
+    comment: complex amplitude a -> power a^2
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_type: analog.GR_GAUSSIAN
+    seed: '5'
+    type: complex
+  states:
+    coordinate: [600, 320]
+    rotation: 0
+    state: enabled
+- name: jammer
+  id: analog_noise_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    amp: math.sqrt(jammer_power)
+    comment: broadband Gaussian jammer
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_type: analog.GR_GAUSSIAN
+    seed: '6'
+    type: complex
+  states:
+    coordinate: [600, 420]
+    rotation: 0
+    state: enabled
+- name: channel_sum
+  id: blocks_add_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: rx = tx + noise + jammer
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '3'
+    type: complex
+    vlen: '1'
+  states:
+    coordinate: [816, 300]
+    rotation: 0
+    state: enabled
+- name: rrc_rx
+  id: fir_filter_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: 'matched filter, decimating to the symbol instants (total delay 11*sps is a multiple of sps)'
+    decim: sps
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_delay: '0'
+    taps: rrc_taps
+    type: ccf
+  states:
+    coordinate: [960, 300]
+    rotation: 0
+    state: enabled
+- name: time_sink
+  id: qtgui_time_sink_x
+  parameters:
+    autoscale: 'True'
+    comment: tx (shaped) and rx waveforms
+    gui_hint: 1,0,1,2
+    name: '"tx / rx waveform"'
+    nconnections: '2'
+    size: '512'
+    srate: samp_rate
+    type: complex
+    ylabel: Amplitude
+    yunit: '""'
+  states:
+    coordinate: [816, 140]
+    rotation: 0
+    state: enabled
+- name: freq_sink
+  id: qtgui_freq_sink_x
+  parameters:
+    bw: samp_rate
+    comment: received spectrum
+    fc: '0'
+    fftsize: '1024'
+    gui_hint: 2,0,1,1
+    name: '"received spectrum"'
+    nconnections: '1'
+    type: complex
+  states:
+    coordinate: [960, 420]
+    rotation: 0
+    state: enabled
+- name: const_sink
+  id: qtgui_const_sink_x
+  parameters:
+    comment: constellation at the symbol instants
+    gui_hint: 2,1,1,1
+    name: '"constellation"'
+    nconnections: '1'
+    size: '1024'
+    type: complex
+    xmax: '2'
+    xmin: '-2'
+    ymax: '2'
+    ymin: '-2'
+  states:
+    coordinate: [1320, 300]
+    rotation: 0
+    state: enabled
+
+connections:
+- [random_symbols, '0', qpsk_map, '0']
+- [qpsk_map, '0', rrc_tx, '0']
+- [rrc_tx, '0', throttle, '0']
+- [throttle, '0', channel_sum, '0']
+- [noise, '0', channel_sum, '1']
+- [jammer, '0', channel_sum, '2']
+- [throttle, '0', time_sink, '0']
+- [channel_sum, '0', time_sink, '1']
+- [channel_sum, '0', freq_sink, '0']
+- [channel_sum, '0', rrc_rx, '0']
+- [rrc_rx, '0', const_sink, '0']
+
+metadata:
+  file_format: 1
+  grc_version: 3.10.9.2

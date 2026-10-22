@@ -1,0 +1,45 @@
+﻿GNU Radio 3.10.12.0 available (C:\Users\HP\radioconda\envs\cognitwin-gr\python.exe)
+[1/27] static_awgn_snr4_J0
+[2/27] static_awgn_snr4_J0.05
+[3/27] static_awgn_snr4_J0.2
+[4/27] static_awgn_snr8_J0
+[5/27] static_awgn_snr8_J0.05
+[6/27] static_awgn_snr8_J0.2
+[7/27] static_awgn_snr12_J0
+[8/27] static_awgn_snr12_J0.05
+[9/27] static_awgn_snr12_J0.2
+[10/27] static_awgn_snr16_J0
+[11/27] static_awgn_snr16_J0.05
+[12/27] static_awgn_snr16_J0.2
+[13/27] static_rayleigh_snr4_J0
+[14/27] static_rayleigh_snr4_J0.05
+[15/27] static_rayleigh_snr4_J0.2
+[16/27] static_rayleigh_snr8_J0
+[17/27] static_rayleigh_snr8_J0.05
+python.exe : Traceback (most recent call last):
+At line:1 char:397
++ ... NG="utf-8"; & $py experiments/gnuradio_campaign.py --run-id grcl1_202 ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "C:\Users\HP\Desktop\AMRITA\SEM-3\PROJECTS\SDC\cognitwin-sdr\cognitwin-sdr\experiments\gnuradio_campaign.py", 
+line 140, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "C:\Users\HP\Desktop\AMRITA\SEM-3\PROJECTS\SDC\cognitwin-sdr\cognitwin-sdr\experiments\gnuradio_campaign.py", 
+line 85, in main
+    rows = run_closed_loop(sched, pol, seed=1000 * ci + s, base=base, condition_name=name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\AMRITA\SEM-3\PROJECTS\SDC\cognitwin-sdr\cognitwin-sdr\src\gnuradio_phy\closed_loop.py", 
+line 108, in run_closed_loop
+    res = decide_on_export(d, pipeline, require_gnuradio=require_gnuradio, ledger_path=ledger_path,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\AMRITA\SEM-3\PROJECTS\SDC\cognitwin-sdr\cognitwin-sdr\src\gnuradio_phy\runner.py", line 
+48, in decide_on_export
+    rep.raise_if_invalid(context=f"GNU Radio export {d.get('experiment_id', '?')}")
+  File "C:\Users\HP\Desktop\AMRITA\SEM-3\PROJECTS\SDC\cognitwin-sdr\cognitwin-sdr\src\simulink_bridge\validation.py", 
+line 181, in raise_if_invalid
+    raise MeasurementValidationError(prefix + "; ".join(self.errors))
+src.simulink_bridge.validation.MeasurementValidationError: GNU Radio export 
+gr-BPSK-RAYLEIGH-block-snr+8.0-J0.200-s17001002-18f86a127c: gr_timing_ok: symbol timing lag 10 != expected 44

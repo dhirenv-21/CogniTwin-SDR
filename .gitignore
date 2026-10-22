@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+simulink/slprj/
+*.slxc
+*.autosave
+slprj/
+# regenerable Python fixtures written by experiments/simulink_acwra_campaign.py --source fixture
+simulink/results/campaign_fixture/
+# per-run GNU Radio NPZ exports (large; the ledger and campaign summaries are kept)
+results/gnuradio/runs/
+
+# interactive dashboard runs (exports, logs, ledger)
+results/gnuradio/dashboard/
