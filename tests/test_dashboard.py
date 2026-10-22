@@ -215,18 +215,97 @@ def test_stop_terminates_a_running_dashboard_job():
 
 # ------------------------------------------------------------------ UI
 
-def test_app_renders_without_launching_anything():
+PAGES = ["views/overview.py", "views/live.py", "views/campaign.py", "views/agents.py", "views/comparison.py",
+         "views/history.py", "views/diagnostics.py", "views/settings.py"]
+
+
+def _app():
     pytest.importorskip("streamlit", reason="Streamlit not installed in this environment")
     from streamlit.testing.v1 import AppTest
-    before = set(os.listdir(B.RUNS)) if os.path.isdir(B.RUNS) else set()
-    at = AppTest.from_file(os.path.join(ROOT, "dashboard", "app.py"), default_timeout=120).run()
+    return AppTest.from_file(os.path.join(ROOT, "dashboard", "app.py"), default_timeout=180)
+
+
+def _listing(base):
+    return set(os.listdir(base)) if os.path.isdir(base) else set()
+
+
+def test_app_renders_without_launching_anything():
+    before = (_listing(B.RUNS), _listing(B.CAMPAIGNS))
+    at = _app().run()
     assert not at.exception
-    after = set(os.listdir(B.RUNS)) if os.path.isdir(B.RUNS) else set()
-    assert after == before
-    run = next(b for b in at.button if "RUN SIMULATION" in b.label)
+    at.switch_page("views/live.py").run()
+    assert not at.exception
+    assert (_listing(B.RUNS), _listing(B.CAMPAIGNS)) == before
+    run = at.button(key="btn_run")
     assert run.disabled == (not gnuradio_available())
-    at.selectbox(key="in_mod").set_value("OFDM-QPSK")
+    at.button_group(key="in_mod").set_value("OFDM-QPSK")
     at.number_input(key="in_nsym").set_value(1000)
     at.run()
-    assert next(b for b in at.button if "RUN SIMULATION" in b.label).disabled
+    assert at.button(key="btn_run").disabled
     assert any("multiple of 64" in m.value for m in at.markdown)
+
+
+@pytest.mark.parametrize("page", PAGES)
+def test_every_page_renders_and_launches_nothing(page):
+    before = (_listing(B.RUNS), _listing(B.CAMPAIGNS))
+    at = _app().run()
+    at.switch_page(page).run()
+    assert not at.exception, [e.value for e in at.exception]
+    assert (_listing(B.RUNS), _listing(B.CAMPAIGNS)) == before
+
+
+def test_execution_controls_follow_gnuradio_availability():
+    at = _app().run()
+    at.switch_page("views/campaign.py").run()
+    assert at.button(key="btn_camp").disabled                 # unconfirmed (and without GNU Radio)
+    if not gnuradio_available():
+        assert any("Execution disabled" in w.value for w in at.warning)
+        at.switch_page("views/live.py").run()
+        assert at.button(key="btn_run").disabled and at.button(key="btn_smoke").disabled
+
+
+def test_unavailable_values_are_shown_as_missing_not_zero():
+    import importlib
+    import sys as _s
+    _s.path.insert(0, os.path.join(ROOT, "dashboard"))
+    C = importlib.import_module("ui.components")
+    assert [C.fmt(v) for v in (None, "", float("nan"), float("inf"))] == ["—"] * 4
+    assert C.fmt(0.0) == "0" and C.fmt(0) == "0"
+    assert ">—<" in C.metric("BER", C.fmt(None)) and "kb/s" not in C.metric("Goodput", "—", unit="kb/s")
+
+
+def test_policy_comparison_shows_the_recorded_result():
+    path = os.path.join(ROOT, "results", "gnuradio", "campaign", "grcl1_20261022_v2")
+    if not os.path.exists(os.path.join(path, "runs.csv")):
+        pytest.skip("campaign grcl1_20261022_v2 not present")
+    at = _app().run()
+    at.switch_page("views/comparison.py").run()
+    assert not at.exception
+    text = " ".join(m.value for m in at.markdown)
+    assert "SINR Threshold" in text                            # highest mean goodput as recorded, not ACWRA
+    comp = B.campaign_comparison(path)
+    best = max(comp["means"], key=lambda r: r["goodput_kbps"])["policy"]
+    assert best == "sinr_threshold"
+    sub = B.campaign_comparison(path, [c for c in {r["condition"] for r in B.campaign_runs(path)} if "awgn" in c])
+    assert sub["conditions"] == 12 and sub["runs"] == 360
+
+
+def test_condition_names_and_overview_counts_come_from_files():
+    assert B.parse_condition("static_rayleigh_tv_snr8_J0.05") == {"kind": "static", "channel": "RAYLEIGH (changing)",
+                                                                  "snr_db": 8.0, "jammer": 0.05}
+    assert B.parse_condition("step_jammer")["kind"] == "dynamic"
+    s = B.overview_stats()
+    assert s["validated_episodes"] <= s["episodes"]
+    label, level, _ = B.gnuradio_state({"available": False, "detail": "ModuleNotFoundError: x"}, False)
+    assert level == "err" and "not installed" in label
+    assert B.gnuradio_state({"available": True, "version": "3.10", "detail": ""}, True)[1] == "run"
+    assert all(not os.path.isabs(a["path"]) for a in B.artifacts(os.path.join(ROOT, "results", "gnuradio")))
+
+
+def test_fixture_run_appears_in_the_ui_labelled_as_fixture(fixture_run):
+    at = _app().run()
+    at.switch_page("views/live.py").run()
+    assert not at.exception
+    assert any("python_fixture" in m.value.lower() for m in at.markdown)
+    at.switch_page("views/agents.py").run()
+    assert not at.exception

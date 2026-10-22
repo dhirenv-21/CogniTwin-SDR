@@ -137,13 +137,27 @@ skip with the reason and the scripts exit with `BLOCKED`. Setup and resume comma
 
 ## 🖥️ Control Dashboard
 
+From the repository root:
+
 ```bash
-C:\Users\HP\radioconda\envs\cognitwin-dash\python.exe dashboard\run_dashboard.py
+python dashboard/run_dashboard.py
 ```
 
-Set inputs, choose a policy and click RUN SIMULATION. GNU Radio runs through the existing
-backend, and the dashboard shows the measured results, signal plots and the agent/ACWRA
-decisions. See [`docs/DASHBOARD.md`](docs/DASHBOARD.md).
+Then open <http://localhost:8501> (another port: append `--server.port 8502`).
+
+The launcher checks whether the current Python can import GNU Radio. If not, it relaunches
+itself with a GNU Radio conda environment (`cognitwin-gr`, e.g. `D:\micromamba\envs\cognitwin-gr`,
+or `$COGNITWIN_GR_PYTHON`), so **Run simulation** works with the same command. Without such an
+environment the dashboard is browse-only and says why. To create the environment:
+
+```bash
+micromamba create -n cognitwin-gr -c conda-forge python=3.12 numpy=2.2 scipy=1.15 "libblas=*=*openblas" gnuradio=3.10.12 scikit-learn=1.7.2 matplotlib joblib pytest pyyaml streamlit plotly pandas
+```
+
+Eight views: Overview, Live Simulation, Campaign Lab, AI Agents, Policy Comparison,
+Run History, System Diagnostics and Settings. Set inputs, choose a policy and click
+**Run simulation**. GNU Radio runs through the existing backend, and the views show the run's
+measured results, signal plots and agent/ACWRA decisions. See [`docs/DASHBOARD.md`](docs/DASHBOARD.md).
 
 ---
 

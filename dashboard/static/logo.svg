@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="232" height="40" viewBox="0 0 232 40" fill="none">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#38D9FF"/>
+      <stop offset="1" stop-color="#818CF8"/>
+    </linearGradient>
+  </defs>
+  <rect x="1" y="2" width="36" height="36" rx="10" fill="#111B2C" stroke="#25344A"/>
+  <path d="M7 20h4l3-8 4 16 4-12 3 6 3-2h5" stroke="url(#g)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="48" y="19" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="15.5" font-weight="650" fill="#E6EDF7" letter-spacing="-0.2">CogniTwin<tspan fill="#38D9FF">-SDR</tspan></text>
+  <text x="48" y="33" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="9" font-weight="500" fill="#8C9BB3" letter-spacing="1.4">WIRELESS CYBER DEFENSE</text>
+</svg>
