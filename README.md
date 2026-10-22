@@ -1,14 +1,64 @@
-# CogniTwin-SDR: Agentic Cognitive Digital Twin for Autonomous Wireless Cyber Defense
+<div align="center">
 
-> **A software-only research prototype for simulated cognitive radio digital twin modeling and autonomous cyber defense.**
+<img src="dashboard/static/logo.svg" alt="CogniTwin-SDR" width="300">
 
----
+# CogniTwin-SDR
 
-## 📌 Overview
+**Agentic Cognitive Digital Twin for Autonomous Wireless Cyber Defense**
 
-**CogniTwin-SDR** is an advanced software simulation framework designed for research into agentic cognitive digital twins applied to wireless software-defined radio (SDR) environments and autonomous cyber defense. 
+[![tests](https://github.com/dhirenv-21/CogniTwin-SDR/actions/workflows/tests.yml/badge.svg)](https://github.com/dhirenv-21/CogniTwin-SDR/actions/workflows/tests.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-38D9FF.svg)](LICENSE)
+![Python](https://img.shields.io/badge/python-3.10%20%7C%203.12-818CF8.svg)
+![GNU Radio](https://img.shields.io/badge/GNU%20Radio-3.10.12-34C79A.svg)
+![Streamlit](https://img.shields.io/badge/dashboard-Streamlit-F2706B.svg)
 
-The repository operates entirely in simulation with **NO physical SDR hardware required**: a MATLAB/Simulink physical layer exports complex I/Q measurements, and a Python stack (NumPy/SciPy/scikit-learn) of agents, a cognitive digital twin and the ACWRA decision engine consumes them.
+</div>
+
+A software-only research platform: a **GNU Radio 3.10** physical layer (BPSK, QPSK, OFDM-QPSK
+over AWGN, Rayleigh/Rician fading and a jammer) feeds a multi-agent pipeline (**Spectrum
+Agent → Digital Twin → Prediction Agent → Cyber Defense Agent**) and the **ACWRA** decision engine,
+which reconfigures the link episode by episode. Every result is validated and labelled with its
+provenance. No SDR hardware is needed, and nothing is transmitted over the air.
+
+![Live Simulation](docs/images/live.png)
+
+## ✨ Highlights
+
+- **Real GNU Radio PHY**: flowgraph with RRC shaping, fading, noise and jammer branches measured separately; BER validated against theory (18/18 points within CI).
+- **Cognitive pipeline**: Random-Forest modulation classifier + blind SNR, a digital twin with counterfactual evaluation, risk prediction, a risk-gated candidate set and multi-objective ACWRA utility scoring.
+- **Closed-loop campaigns**: 27 conditions × 5 seeds × 6 policies = 4,860 GNU Radio episodes (`results/gnuradio/campaign/grcl1_20261022_v2`), with condition-level paired statistics (bootstrap CI, Wilcoxon).
+- **Honest results**: in that campaign an a-priori SINR-threshold rule beats ACWRA on goodput and BER; the dashboard and reports show the data as measured.
+- **Control dashboard**: eight-page Streamlit workbench to run simulations and campaigns and to inspect signals, agent decisions, policy comparisons and run provenance.
+
+<table>
+<tr>
+<td><img src="docs/images/overview.png" alt="Overview"></td>
+<td><img src="docs/images/agents.png" alt="AI Agents"></td>
+</tr>
+<tr>
+<td align="center"><b>Overview</b></td>
+<td align="center"><b>AI Agents</b>: per-episode pipeline and ACWRA utility scores</td>
+</tr>
+<tr>
+<td colspan="2"><img src="docs/images/comparison.png" alt="Policy Comparison"></td>
+</tr>
+<tr>
+<td colspan="2" align="center"><b>Policy Comparison</b>: recorded campaign means and paired statistics</td>
+</tr>
+</table>
+
+## 🚀 Quick start
+
+```bash
+git clone https://github.com/dhirenv-21/CogniTwin-SDR.git
+cd CogniTwin-SDR
+pip install -r requirements.txt
+python dashboard/run_dashboard.py        # http://localhost:8501
+```
+
+Without GNU Radio the dashboard is browse-only: every recorded result is available and the run buttons
+explain why they are disabled. To execute simulations, create the GNU Radio environment once (see
+[Control Dashboard](#️-control-dashboard)); the launcher then switches to it automatically.
 
 ---
 
@@ -36,9 +86,8 @@ cognitwin-sdr/
 ├── config/scenarios/      virtual-RF scenario keyframes (JSON)
 ├── docs/                  design notes per subsystem
 ├── tests/                 pytest suite
-├── AUTONOMOUS_PROGRESS.md      session log: phases, defects fixed, next action
-├── AUTONOMOUS_TEST_REPORT.md   test inventory by category and exact results
-└── MATLAB_HANDOFF.md           what to run on a MATLAB/Simulink machine
+├── dashboard/             Streamlit control dashboard (app shell, views/, ui/ design system, worker)
+└── docs/reports/          session log, test report, GNU Radio integration and completion reports, MATLAB handoff
 ```
 
 ---
@@ -75,7 +124,7 @@ require_model_version="v4", not_before=<time>)` enforces this and rejects stale 
 
 ```bash
 python -m venv venv
-venv\Scriptsctivate                    # Linux/macOS: source venv/bin/activate
+venv\Scripts\activate                    # Linux/macOS: source venv/bin/activate
 pip install -r requirements-lock.txt     # exact versions used for the committed results
 python -m pytest -q                      # Python test suite
 python experiments/review_demo.py        # review demo: real (historical v3) Simulink export ->
@@ -90,7 +139,7 @@ Documentation: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) ·
 [`docs/EXPERIMENT_PROTOCOL.md`](docs/EXPERIMENT_PROTOCOL.md) ·
 [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md) ·
 [`results/evaluation/RESEARCH_EVALUATION.md`](results/evaluation/RESEARCH_EVALUATION.md) ·
-[`MATLAB_HANDOFF.md`](MATLAB_HANDOFF.md) · [`FINAL_COMPLETION_REPORT.md`](FINAL_COMPLETION_REPORT.md)
+[`docs/reports/MATLAB_HANDOFF.md`](docs/reports/MATLAB_HANDOFF.md) · [`docs/reports/FINAL_COMPLETION_REPORT.md`](docs/reports/FINAL_COMPLETION_REPORT.md)
 
 ---
 
@@ -122,7 +171,7 @@ Python agents. See [`simulink/README.md`](simulink/README.md) for building the m
 
 ---
 
-## 📻 GNU Radio Physical Layer (executed: PHY validated; agents and campaign not yet run)
+## 📻 GNU Radio Physical Layer (executed: PHY validated, closed-loop campaign run)
 
 A second, independent PHY built from GNU Radio 3.10 blocks: BPSK/QPSK with RRC pulse shaping, and
 OFDM-QPSK with IFFT and cyclic prefix. The channel is AWGN, block or time-varying Rayleigh/Rician, plus a Gaussian jammer.
@@ -131,7 +180,7 @@ hash, run ledger), and they feed the unchanged agents and ACWRA, including an ep
 It runs in a separate conda environment (GNU Radio 3.10.12.0). There, all 12 execution tests pass and
 measured BER matches theory at 18/18 points. In environments without GNU Radio, the execution tests
 skip with the reason and the scripts exit with `BLOCKED`. Setup and resume commands:
-[`docs/GNURADIO_SETUP.md`](docs/GNURADIO_SETUP.md); status: [`GNURADIO_INTEGRATION_REPORT.md`](GNURADIO_INTEGRATION_REPORT.md).
+[`docs/GNURADIO_SETUP.md`](docs/GNURADIO_SETUP.md); status: [`docs/reports/GNURADIO_INTEGRATION_REPORT.md`](docs/reports/GNURADIO_INTEGRATION_REPORT.md).
 
 ---
 
@@ -169,7 +218,7 @@ python -m pytest -q
 
 All tests are Python; none executes MATLAB. GNU Radio execution tests
 (`tests/test_gnuradio_execution.py`) run only where GNU Radio imports and otherwise skip with the reason. Categories, counts and what each proves:
-[`AUTONOMOUS_TEST_REPORT.md`](AUTONOMOUS_TEST_REPORT.md).
+[`docs/reports/AUTONOMOUS_TEST_REPORT.md`](docs/reports/AUTONOMOUS_TEST_REPORT.md).
 
 ---
 
@@ -189,18 +238,18 @@ All tests are Python; none executes MATLAB. GNU Radio execution tests
 | `python experiments/review_demo.py [--mat F \| --fixture]` | one input through every stage, provenance-labelled, then a short virtual-RF loop | as labelled |
 | `python experiments/acwra_decide.py --mat F --state S --out D [--require-real]` | one closed-loop decision (called by `simulink/matlab/run_simulink_closed_loop.m`) | as labelled |
 
-MATLAB side: `simulink/README.md` and [`MATLAB_HANDOFF.md`](MATLAB_HANDOFF.md). Before transfer:
+MATLAB side: `simulink/README.md` and [`docs/reports/MATLAB_HANDOFF.md`](docs/reports/MATLAB_HANDOFF.md). Before transfer:
 `python experiments/handoff_check.py pre`; after the artifacts return: `python experiments/handoff_check.py post`.
 
 ---
 
 ## ⚠️ Known limitations (summary)
 
-Full status, evidence and acceptance criteria: [`FINAL_COMPLETION_REPORT.md`](FINAL_COMPLETION_REPORT.md).
+Full status, evidence and acceptance criteria: [`docs/reports/FINAL_COMPLETION_REPORT.md`](docs/reports/FINAL_COMPLETION_REPORT.md).
 
 * **No v4 Simulink run exists.** The committed `.slx` is the v3 build, whose noise ignored the seed.
   D1–D18 (including D13), the v4 baseline and the Simulink closed loop have never executed.
-  See `MATLAB_HANDOFF.md`.
+  See `docs/reports/MATLAB_HANDOFF.md`.
 * Closed-loop results use the Python virtual-RF link model, which is also the Digital Twin's
   sandbox model (expected fade versus the realised block fade). They measure decision logic,
   not physical-layer performance.
@@ -219,4 +268,5 @@ Full status, evidence and acceptance criteria: [`FINAL_COMPLETION_REPORT.md`](FI
 
 ## 🛡️ License & Citation
 
-Research prototype developed for Autonomous Wireless Cyber Defense studies.
+Released under the [MIT License](LICENSE). Research prototype developed for Autonomous Wireless
+Cyber Defense studies; if you use it, please cite it via [`CITATION.cff`](CITATION.cff).

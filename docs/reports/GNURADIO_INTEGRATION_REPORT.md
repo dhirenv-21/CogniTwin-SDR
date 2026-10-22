@@ -12,7 +12,7 @@ Branch `autonomous-completion` (`master` untouched). Base commit of this phase: 
 | item | finding |
 |---|---|
 | OS | Windows 11 Home Single Language 10.0.26200, 64-bit, ~353 GB free |
-| Python | 3.10.11 (`C:\Users\HP\AppData\Local\Programs\Python\Python310`) |
+| Python | 3.10.11 (user install, `%LOCALAPPDATA%\Programs\Python\Python310`) |
 | GNU Radio / GRC / bindings | **absent**: `import gnuradio` → ModuleNotFoundError; no `gnuradio-companion`, `grcc`, `gnuradio-config-info` |
 | package managers | no conda / mamba / micromamba / docker; `wsl.exe` present but WSL not installed |
 | SDR hardware | none detected (not needed) |

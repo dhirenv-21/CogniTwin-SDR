@@ -8,12 +8,12 @@ This document details the multi-agent cognitive intelligence architecture in **C
 
 | Multi-Agent Concept | Functional Role / Responsibility | Python Implementation File | Class Name |
 | :--- | :--- | :--- | :--- |
-| **Inter-Agent Messages** | Structured evidence data containers | [src/agents/messages.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/agents/messages.py) | `SpectrumIntelligenceResult`, `PredictionResult`, `DefenseCandidate`, `MultiAgentSnapshot` |
-| **Base Agent Layer** | Shared abstract interface, confidence & status tracking | [src/agents/base_agent.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/agents/base_agent.py) | `BaseAgent` |
-| **Spectrum Intelligence Agent** | I/Q analysis via ML classifier & anomaly detection | [src/agents/spectrum_agent.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/agents/spectrum_agent.py) | `SpectrumAgent` |
-| **Prediction Agent** | DT trend querying & mathematical risk scoring | [src/agents/prediction_agent.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/agents/prediction_agent.py) | `PredictionAgent` |
-| **Cyber Defense Agent** | Candidate mitigation strategy generation | [src/agents/cyber_defense_agent.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/agents/cyber_defense_agent.py) | `CyberDefenseAgent` |
-| **Multi-Agent Orchestrator** | 6-step sequential pipeline execution & snapshotting | [src/agents/orchestrator.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/agents/orchestrator.py) | `MultiAgentOrchestrator` |
+| **Inter-Agent Messages** | Structured evidence data containers | [src/agents/messages.py](../src/agents/messages.py) | `SpectrumIntelligenceResult`, `PredictionResult`, `DefenseCandidate`, `MultiAgentSnapshot` |
+| **Base Agent Layer** | Shared abstract interface, confidence & status tracking | [src/agents/base_agent.py](../src/agents/base_agent.py) | `BaseAgent` |
+| **Spectrum Intelligence Agent** | I/Q analysis via ML classifier & anomaly detection | [src/agents/spectrum_agent.py](../src/agents/spectrum_agent.py) | `SpectrumAgent` |
+| **Prediction Agent** | DT trend querying & mathematical risk scoring | [src/agents/prediction_agent.py](../src/agents/prediction_agent.py) | `PredictionAgent` |
+| **Cyber Defense Agent** | Candidate mitigation strategy generation | [src/agents/cyber_defense_agent.py](../src/agents/cyber_defense_agent.py) | `CyberDefenseAgent` |
+| **Multi-Agent Orchestrator** | 6-step sequential pipeline execution & snapshotting | [src/agents/orchestrator.py](../src/agents/orchestrator.py) | `MultiAgentOrchestrator` |
 
 ---
 

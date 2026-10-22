@@ -17,7 +17,7 @@ Python CogniTwin-SDR agent stack (`src/simulink_bridge`).
 > Rayleigh case and the baseline suite, and logs everything to `simulink/run_logs/<stamp>/`.
 > Its `manifest.csv` lists every MAT file under `results/` with `written_this_run` 0/1 and
 > its `model_version`, so stale exports cannot be mistaken for new ones. Full procedure:
-> [`../MATLAB_HANDOFF.md`](../MATLAB_HANDOFF.md).
+> [`../MATLAB_HANDOFF.md`](../docs/reports/MATLAB_HANDOFF.md).
 
 ---
 

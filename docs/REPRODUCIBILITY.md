@@ -37,7 +37,7 @@ Every run folder's `config.json` records the commit (suffixed `-dirty` if `src/`
 
 ## B. MATLAB / Simulink (a machine with MATLAB + Simulink)
 
-Exactly as in [`MATLAB_HANDOFF.md`](../MATLAB_HANDOFF.md):
+Exactly as in [`MATLAB_HANDOFF.md`](reports/MATLAB_HANDOFF.md):
 
 ```matlab
 cd <repo>/simulink/matlab

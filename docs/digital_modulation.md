@@ -8,14 +8,14 @@ This document maps syllabus digital communication concepts to the Python impleme
 
 | Digital Communication Concept | Mathematical Model / Definition | Python Implementation File | Class / Function Name |
 | :--- | :--- | :--- | :--- |
-| **Bit Generation & BER** | $\text{BER} = \frac{\sum (b_{tx} \neq b_{rx})}{N_{bits}}$ | [src/modulation/digital/common.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/modulation/digital/common.py) | `generate_bits`, `calculate_ber` |
-| **Gray Coding & Mapping** | $g = b \oplus (b \gg 1)$ | [src/modulation/digital/common.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/modulation/digital/common.py) | `binary_to_gray`, `gray_to_binary` |
-| **Amplitude Shift Keying (ASK)** | $s(t) = A_k \cos(2\pi f_c t), A_k \in \{0, 1\}$ | [src/modulation/digital/ask.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/modulation/digital/ask.py) | `ASKModulator` |
-| **Frequency Shift Keying (FSK)** | $s(t) = \cos(2\pi f_k t), f_k \in \{f_0, f_1\}$ | [src/modulation/digital/fsk.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/modulation/digital/fsk.py) | `FSKModulator` |
-| **Binary Phase Shift Keying (BPSK)** | $s(t) = \pm \cos(2\pi f_c t), \phi \in \{0, \pi\}$ | [src/modulation/digital/psk.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/modulation/digital/psk.py) | `PSKModulator(M=2)` |
-| **Quadrature PSK (QPSK)** | $s(t) = I_k \cos(2\pi f_c t) - Q_k \sin(2\pi f_c t)$ | [src/modulation/digital/psk.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/modulation/digital/psk.py) | `PSKModulator(M=4)` |
-| **M-ary PSK (8-PSK, 16-PSK)** | $S_m = e^{j(2\pi m / M)}, m=0\dots M-1$ | [src/modulation/digital/psk.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/modulation/digital/psk.py) | `PSKModulator(M=8, 16)` |
-| **Research Strategy Simulation API** | $\text{Returns } \{\text{ber}, \eta, \dots\}$ | [src/modulation/digital/common.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/modulation/digital/common.py) | `simulate_strategy` |
+| **Bit Generation & BER** | $\text{BER} = \frac{\sum (b_{tx} \neq b_{rx})}{N_{bits}}$ | [src/modulation/digital/common.py](../src/modulation/digital/common.py) | `generate_bits`, `calculate_ber` |
+| **Gray Coding & Mapping** | $g = b \oplus (b \gg 1)$ | [src/modulation/digital/common.py](../src/modulation/digital/common.py) | `binary_to_gray`, `gray_to_binary` |
+| **Amplitude Shift Keying (ASK)** | $s(t) = A_k \cos(2\pi f_c t), A_k \in \{0, 1\}$ | [src/modulation/digital/ask.py](../src/modulation/digital/ask.py) | `ASKModulator` |
+| **Frequency Shift Keying (FSK)** | $s(t) = \cos(2\pi f_k t), f_k \in \{f_0, f_1\}$ | [src/modulation/digital/fsk.py](../src/modulation/digital/fsk.py) | `FSKModulator` |
+| **Binary Phase Shift Keying (BPSK)** | $s(t) = \pm \cos(2\pi f_c t), \phi \in \{0, \pi\}$ | [src/modulation/digital/psk.py](../src/modulation/digital/psk.py) | `PSKModulator(M=2)` |
+| **Quadrature PSK (QPSK)** | $s(t) = I_k \cos(2\pi f_c t) - Q_k \sin(2\pi f_c t)$ | [src/modulation/digital/psk.py](../src/modulation/digital/psk.py) | `PSKModulator(M=4)` |
+| **M-ary PSK (8-PSK, 16-PSK)** | $S_m = e^{j(2\pi m / M)}, m=0\dots M-1$ | [src/modulation/digital/psk.py](../src/modulation/digital/psk.py) | `PSKModulator(M=8, 16)` |
+| **Research Strategy Simulation API** | $\text{Returns } \{\text{ber}, \eta, \dots\}$ | [src/modulation/digital/common.py](../src/modulation/digital/common.py) | `simulate_strategy` |
 
 ---
 

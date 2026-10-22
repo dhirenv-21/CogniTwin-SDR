@@ -8,17 +8,17 @@ This document provides a comprehensive theoretical and practical coursework refe
 
 | Communication Concept | Mathematical Model / Definition | Python Implementation File | Class / Function Name |
 | :--- | :--- | :--- | :--- |
-| **Baseband Signal Generation** | $m(t) = A_m \cos(2\pi f_m t)$ | [src/signal/generator.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/signal/generator.py) | `generate_sinusoid` |
-| **Analytic Signal (Hilbert)** | $x_a(t) = x(t) + j \mathcal{H}\{x(t)\}$ | [src/signal/generator.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/signal/generator.py) | `to_iq` |
-| **AWGN Channel Modeling** | $r(t) = s(t) + n(t), \quad \text{SNR}_{dB}$ | [src/channel/awgn.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/channel/awgn.py) | `AWGNChannel.transmit` |
-| **AM DSB-SC** | $s(t) = m(t) \cos(2\pi f_c t)$ | [src/modulation/analog/am.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/modulation/analog/am.py) | `AMDSBSCModulator` |
-| **AM DSB-TC** | $s(t) = A_c [1 + \mu m_n(t)] \cos(2\pi f_c t)$ | [src/modulation/analog/am.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/modulation/analog/am.py) | `AMDSTCModulator` |
-| **SSB (USB / LSB)** | $s(t) = m(t)\cos(2\pi f_c t) \mp \hat{m}(t)\sin(2\pi f_c t)$ | [src/modulation/analog/ssb.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/modulation/analog/ssb.py) | `SSBModulator` |
-| **Narrowband FM (NBFM)** | $s(t) = A_c \cos(2\pi f_c t + 2\pi k_f \int m dt), \, \beta \ll 1$ | [src/modulation/analog/fm.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/modulation/analog/fm.py) | `FMModulator` |
-| **Wideband FM (WBFM)** | $s(t) = A_c \cos(2\pi f_c t + 2\pi k_f \int m dt), \, \beta \ge 1$ | [src/modulation/analog/fm.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/modulation/analog/fm.py) | `FMModulator` |
-| **Phase Modulation (PM)** | $s(t) = A_c \cos(2\pi f_c t + k_p m(t))$ | [src/modulation/analog/pm.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/modulation/analog/pm.py) | `PMModulator` |
-| **FIR Low-Pass Filtering** | $H(f) \text{ zero-phase FIR LPF}$ | [src/signal/filters.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/signal/filters.py) | `design_fir_lowpass`, `apply_filter` |
-| **Reconstruction Metrics** | $\text{Pearson } r, \text{ MSE}, \text{ NRE}$ | [src/evaluation/metrics.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/evaluation/metrics.py) | `pearson_correlation`, `mean_squared_error` |
+| **Baseband Signal Generation** | $m(t) = A_m \cos(2\pi f_m t)$ | [src/signal/generator.py](../src/signal/generator.py) | `generate_sinusoid` |
+| **Analytic Signal (Hilbert)** | $x_a(t) = x(t) + j \mathcal{H}\{x(t)\}$ | [src/signal/generator.py](../src/signal/generator.py) | `to_iq` |
+| **AWGN Channel Modeling** | $r(t) = s(t) + n(t), \quad \text{SNR}_{dB}$ | [src/channel/awgn.py](../src/channel/awgn.py) | `AWGNChannel.transmit` |
+| **AM DSB-SC** | $s(t) = m(t) \cos(2\pi f_c t)$ | [src/modulation/analog/am.py](../src/modulation/analog/am.py) | `AMDSBSCModulator` |
+| **AM DSB-TC** | $s(t) = A_c [1 + \mu m_n(t)] \cos(2\pi f_c t)$ | [src/modulation/analog/am.py](../src/modulation/analog/am.py) | `AMDSTCModulator` |
+| **SSB (USB / LSB)** | $s(t) = m(t)\cos(2\pi f_c t) \mp \hat{m}(t)\sin(2\pi f_c t)$ | [src/modulation/analog/ssb.py](../src/modulation/analog/ssb.py) | `SSBModulator` |
+| **Narrowband FM (NBFM)** | $s(t) = A_c \cos(2\pi f_c t + 2\pi k_f \int m dt), \, \beta \ll 1$ | [src/modulation/analog/fm.py](../src/modulation/analog/fm.py) | `FMModulator` |
+| **Wideband FM (WBFM)** | $s(t) = A_c \cos(2\pi f_c t + 2\pi k_f \int m dt), \, \beta \ge 1$ | [src/modulation/analog/fm.py](../src/modulation/analog/fm.py) | `FMModulator` |
+| **Phase Modulation (PM)** | $s(t) = A_c \cos(2\pi f_c t + k_p m(t))$ | [src/modulation/analog/pm.py](../src/modulation/analog/pm.py) | `PMModulator` |
+| **FIR Low-Pass Filtering** | $H(f) \text{ zero-phase FIR LPF}$ | [src/signal/filters.py](../src/signal/filters.py) | `design_fir_lowpass`, `apply_filter` |
+| **Reconstruction Metrics** | $\text{Pearson } r, \text{ MSE}, \text{ NRE}$ | [src/evaluation/metrics.py](../src/evaluation/metrics.py) | `pearson_correlation`, `mean_squared_error` |
 
 ---
 

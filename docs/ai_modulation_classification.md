@@ -8,12 +8,12 @@ This document provides coursework references and technical explanations mapping 
 
 | AI / ML Concept | Mathematical Model / Definition | Python Implementation File | Function / Class Name |
 | :--- | :--- | :--- | :--- |
-| **I/Q Feature Extraction** | Vectorized time-domain & spectral features | [src/ai/modulation_classifier/features.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/ai/modulation_classifier/features.py) | `extract_features` |
-| **Synthetic Dataset Generation** | 8 classes across 5 SNR levels ($0 \dots 20 \text{ dB}$) | [src/ai/modulation_classifier/dataset.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/ai/modulation_classifier/dataset.py) | `generate_dataset` |
-| **Train/Val/Test Splitting** | Independent 70% / 15% / 15% stratified split | [src/ai/modulation_classifier/dataset.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/ai/modulation_classifier/dataset.py) | `get_train_val_test_splits` |
-| **Random Forest Model** | Ensemble Decision Trees & Serialization | [src/ai/modulation_classifier/model.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/ai/modulation_classifier/model.py) | `train_classifier`, `save_model` |
-| **Model Evaluation** | Confusion Matrix, Macro F1, Accuracy vs. SNR | [src/ai/modulation_classifier/evaluation.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/ai/modulation_classifier/evaluation.py) | `evaluate_model` |
-| **Spectrum Intelligence Inference** | `predict_proba()` + Confidence Threshold ($<0.60 \rightarrow \text{UNKNOWN}$) | [src/ai/modulation_classifier/inference.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/ai/modulation_classifier/inference.py) | `analyze_iq` |
+| **I/Q Feature Extraction** | Vectorized time-domain & spectral features | [src/ai/modulation_classifier/features.py](../src/ai/modulation_classifier/features.py) | `extract_features` |
+| **Synthetic Dataset Generation** | 8 classes across 5 SNR levels ($0 \dots 20 \text{ dB}$) | [src/ai/modulation_classifier/dataset.py](../src/ai/modulation_classifier/dataset.py) | `generate_dataset` |
+| **Train/Val/Test Splitting** | Independent 70% / 15% / 15% stratified split | [src/ai/modulation_classifier/dataset.py](../src/ai/modulation_classifier/dataset.py) | `get_train_val_test_splits` |
+| **Random Forest Model** | Ensemble Decision Trees & Serialization | [src/ai/modulation_classifier/model.py](../src/ai/modulation_classifier/model.py) | `train_classifier`, `save_model` |
+| **Model Evaluation** | Confusion Matrix, Macro F1, Accuracy vs. SNR | [src/ai/modulation_classifier/evaluation.py](../src/ai/modulation_classifier/evaluation.py) | `evaluate_model` |
+| **Spectrum Intelligence Inference** | `predict_proba()` + Confidence Threshold ($<0.60 \rightarrow \text{UNKNOWN}$) | [src/ai/modulation_classifier/inference.py](../src/ai/modulation_classifier/inference.py) | `analyze_iq` |
 
 ---
 

@@ -8,12 +8,12 @@ This document provides technical documentation mapping the discrete-time Virtual
 
 | Environment Concept | Mathematical Model / Definition | Python Implementation File | Class / Function Name |
 | :--- | :--- | :--- | :--- |
-| **Environment State Snapshot** | Dataclass representing physical & network state | [src/virtual_rf/state.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/virtual_rf/state.py) | `EnvironmentState` |
-| **Discrete-Time State Machine** | Block-based time advancement via `step(duration_seconds)` | [src/virtual_rf/environment.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/virtual_rf/environment.py) | `VirtualRFEnvironment` |
-| **Observation APIs** | `observe_iq()`, `observe_state()` | [src/virtual_rf/environment.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/virtual_rf/environment.py) | `observe_iq`, `observe_state` |
-| **Counterfactual Simulation** | Pure state prediction API `simulate(state, strategy)` | [src/virtual_rf/environment.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/virtual_rf/environment.py) | `simulate` |
-| **Interference / Jamming** | Narrowband tone, Broadband noise, Swept chirp jamming | [src/virtual_rf/interference.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/virtual_rf/interference.py) | `InterferenceGenerator` |
-| **Time-Varying Scenario Engine** | JSON keyframe loader and evaluator | [src/virtual_rf/scenario.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/virtual_rf/scenario.py) | `ScenarioEngine` |
+| **Environment State Snapshot** | Dataclass representing physical & network state | [src/virtual_rf/state.py](../src/virtual_rf/state.py) | `EnvironmentState` |
+| **Discrete-Time State Machine** | Block-based time advancement via `step(duration_seconds)` | [src/virtual_rf/environment.py](../src/virtual_rf/environment.py) | `VirtualRFEnvironment` |
+| **Observation APIs** | `observe_iq()`, `observe_state()` | [src/virtual_rf/environment.py](../src/virtual_rf/environment.py) | `observe_iq`, `observe_state` |
+| **Counterfactual Simulation** | Pure state prediction API `simulate(state, strategy)` | [src/virtual_rf/environment.py](../src/virtual_rf/environment.py) | `simulate` |
+| **Interference / Jamming** | Narrowband tone, Broadband noise, Swept chirp jamming | [src/virtual_rf/interference.py](../src/virtual_rf/interference.py) | `InterferenceGenerator` |
+| **Time-Varying Scenario Engine** | JSON keyframe loader and evaluator | [src/virtual_rf/scenario.py](../src/virtual_rf/scenario.py) | `ScenarioEngine` |
 
 ---
 

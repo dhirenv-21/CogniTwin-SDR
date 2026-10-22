@@ -8,13 +8,13 @@ This document provides coursework references and technical explanations mapping 
 
 | Digital Twin Concept | Mathematical Model / Definition | Python Implementation File | Class / Function Name |
 | :--- | :--- | :--- | :--- |
-| **Digital Twin State Snapshot** | `@dataclass` storing mirror of environment metrics | [src/digital_twin/state.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/digital_twin/state.py) | `DigitalTwinState` |
-| **Chronological History Buffer** | Bounded FIFO queue (max 50 states) & rate of change | [src/digital_twin/history.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/digital_twin/history.py) | `HistoryBuffer` |
-| **Short-Horizon Trend Predictor** | Degree-1 linear extrapolation (`np.polyfit`) | [src/digital_twin/predictor.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/digital_twin/predictor.py) | `TrendPredictor` |
-| **Counterfactual Sandbox** | Stateless strategy evaluation via `VirtualRFEnvironment.simulate()` | [src/digital_twin/counterfactual.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/digital_twin/counterfactual.py) | `CounterfactualSandbox` |
-| **Experience Memory V1** | Past transition tuple storage & Euclidean similarity search | [src/digital_twin/experience.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/digital_twin/experience.py) | `ExperienceMemory` |
-| **Fidelity Evaluator** | Mean Absolute Error (MAE) comparing forecast vs actual | [src/digital_twin/fidelity.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/digital_twin/fidelity.py) | `FidelityEvaluator` |
-| **Main CDT Engine** | State update, cloning, prediction, sandbox orchestration | [src/digital_twin/twin.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/digital_twin/twin.py) | `DigitalTwin` |
+| **Digital Twin State Snapshot** | `@dataclass` storing mirror of environment metrics | [src/digital_twin/state.py](../src/digital_twin/state.py) | `DigitalTwinState` |
+| **Chronological History Buffer** | Bounded FIFO queue (max 50 states) & rate of change | [src/digital_twin/history.py](../src/digital_twin/history.py) | `HistoryBuffer` |
+| **Short-Horizon Trend Predictor** | Degree-1 linear extrapolation (`np.polyfit`) | [src/digital_twin/predictor.py](../src/digital_twin/predictor.py) | `TrendPredictor` |
+| **Counterfactual Sandbox** | Stateless strategy evaluation via `VirtualRFEnvironment.simulate()` | [src/digital_twin/counterfactual.py](../src/digital_twin/counterfactual.py) | `CounterfactualSandbox` |
+| **Experience Memory V1** | Past transition tuple storage & Euclidean similarity search | [src/digital_twin/experience.py](../src/digital_twin/experience.py) | `ExperienceMemory` |
+| **Fidelity Evaluator** | Mean Absolute Error (MAE) comparing forecast vs actual | [src/digital_twin/fidelity.py](../src/digital_twin/fidelity.py) | `FidelityEvaluator` |
+| **Main CDT Engine** | State update, cloning, prediction, sandbox orchestration | [src/digital_twin/twin.py](../src/digital_twin/twin.py) | `DigitalTwin` |
 
 ---
 

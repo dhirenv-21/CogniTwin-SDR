@@ -12,3 +12,6 @@ results/gnuradio/runs/
 
 # interactive dashboard runs (exports, logs, ledger)
 results/gnuradio/dashboard/
+
+# local tool settings
+.claude/

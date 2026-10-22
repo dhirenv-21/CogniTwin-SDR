@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this software in your research, please cite it as below."
+title: "CogniTwin-SDR: Agentic Cognitive Digital Twin for Autonomous Wireless Cyber Defense"
+type: software
+authors:
+  - name: "dhirenv-21 and CogniTwin-SDR contributors"
+repository-code: "https://github.com/dhirenv-21/CogniTwin-SDR"
+license: MIT
+keywords:
+  - software-defined radio
+  - GNU Radio
+  - digital twin
+  - multi-agent systems
+  - wireless security
+  - cognitive radio

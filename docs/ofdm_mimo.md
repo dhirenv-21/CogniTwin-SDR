@@ -8,13 +8,13 @@ This document provides coursework references and technical explanations mapping 
 
 | Communication Concept | Mathematical Model / Definition | Python Implementation File | Class / Function Name |
 | :--- | :--- | :--- | :--- |
-| **OFDM Subcarrier Modulation** | $x[n] = \frac{1}{\sqrt{N}} \sum_{k=0}^{N-1} X[k] e^{j 2\pi k n / N}$ | [src/multicarrier/ofdm.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/multicarrier/ofdm.py) | `OFDMTransmitterReceiver` |
-| **Cyclic Prefix Insertion** | $x_{cp} = [x[N-N_{cp}:], x]$ | [src/multicarrier/ofdm.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/multicarrier/ofdm.py) | `modulate` |
-| **Multipath Fading Channel** | $h[n] = \sum_{l=0}^{L-1} a_l \delta[n - \tau_l]$ | [src/multicarrier/channel.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/multicarrier/channel.py) | `MultipathChannel` |
-| **1-Tap Frequency Equalization** | $\hat{X}[k] = \frac{Y[k]}{H[k]}$ | [src/multicarrier/ofdm.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/multicarrier/ofdm.py) | `demodulate` |
-| **2×2 Spatial Multiplexing** | $\mathbf{y}(t) = \mathbf{H} \mathbf{x}(t) + \mathbf{n}(t)$ | [src/multicarrier/mimo.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/multicarrier/mimo.py) | `MIMO2x2System` |
-| **Per-Subcarrier ZF Equalization** | $\mathbf{W}_{ZF}[k] = \mathbf{H}[k]^{-1}$ | [src/multicarrier/mimo.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/multicarrier/mimo.py) | `transmit_and_equalize` |
-| **Multicarrier Strategy API** | Returns $\{\text{ber}, \text{throughput}, \eta\}$ | [src/multicarrier/common.py](file:///c:/Users/HP/Desktop/AMRITA/SEM-3/PROJECTS/SDC/cognitwin-sdr/src/multicarrier/common.py) | `simulate_ofdm_mimo` |
+| **OFDM Subcarrier Modulation** | $x[n] = \frac{1}{\sqrt{N}} \sum_{k=0}^{N-1} X[k] e^{j 2\pi k n / N}$ | [src/multicarrier/ofdm.py](../src/multicarrier/ofdm.py) | `OFDMTransmitterReceiver` |
+| **Cyclic Prefix Insertion** | $x_{cp} = [x[N-N_{cp}:], x]$ | [src/multicarrier/ofdm.py](../src/multicarrier/ofdm.py) | `modulate` |
+| **Multipath Fading Channel** | $h[n] = \sum_{l=0}^{L-1} a_l \delta[n - \tau_l]$ | [src/multicarrier/channel.py](../src/multicarrier/channel.py) | `MultipathChannel` |
+| **1-Tap Frequency Equalization** | $\hat{X}[k] = \frac{Y[k]}{H[k]}$ | [src/multicarrier/ofdm.py](../src/multicarrier/ofdm.py) | `demodulate` |
+| **2×2 Spatial Multiplexing** | $\mathbf{y}(t) = \mathbf{H} \mathbf{x}(t) + \mathbf{n}(t)$ | [src/multicarrier/mimo.py](../src/multicarrier/mimo.py) | `MIMO2x2System` |
+| **Per-Subcarrier ZF Equalization** | $\mathbf{W}_{ZF}[k] = \mathbf{H}[k]^{-1}$ | [src/multicarrier/mimo.py](../src/multicarrier/mimo.py) | `transmit_and_equalize` |
+| **Multicarrier Strategy API** | Returns $\{\text{ber}, \text{throughput}, \eta\}$ | [src/multicarrier/common.py](../src/multicarrier/common.py) | `simulate_ofdm_mimo` |
 
 ---
 
