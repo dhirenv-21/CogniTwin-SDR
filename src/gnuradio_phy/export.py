@@ -151,10 +151,14 @@ def write_export(d: Dict[str, Any], path: str, ledger_path: Optional[str] = DEFA
         np.savez(fh, **arrays)
     if ledger_path:
         os.makedirs(os.path.dirname(os.path.abspath(ledger_path)) or ".", exist_ok=True)
+        try:
+            shown = os.path.relpath(os.path.abspath(path))
+        except ValueError:                     # Windows: export on another drive than the cwd
+            shown = os.path.abspath(path)
         with open(ledger_path, "a", encoding="utf-8") as fh:
             fh.write(json.dumps({
                 "experiment_id": d["experiment_id"], "content_sha256": d["content_sha256"],
-                "path": os.path.relpath(os.path.abspath(path)).replace("\\", "/"),
+                "path": shown.replace("\\", "/"),
                 "gnuradio_version": d["gnuradio_version"], "created_utc": d["created_utc"],
             }, sort_keys=True) + "\n")
     return path

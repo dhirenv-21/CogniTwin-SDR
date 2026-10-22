@@ -49,7 +49,11 @@ def part1(mat_path):
         print(f"INPUT REJECTED (no decision produced): {exc}")
         return 2
     m, rep = res.measurement, res.validation
-    print(f"input      : {os.path.relpath(mat_path, project_root)}")
+    try:
+        shown = os.path.relpath(mat_path, project_root)
+    except ValueError:                          # Windows: input on another drive than the repository
+        shown = mat_path
+    print(f"input      : {shown}")
     print(f"provenance : {LABEL.get(m.provenance, m.provenance)}  [{m.provenance}, "
           f"model {rep.facts.get('model_version', '?')}]")
     if m.provenance == "simulink_export" and rep.facts.get("model_version") != "v4":
