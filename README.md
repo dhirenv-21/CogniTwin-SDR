@@ -145,11 +145,14 @@ python dashboard/run_dashboard.py
 
 Then open <http://localhost:8501> (another port: append `--server.port 8502`).
 
-* **Browse only** (any Python with `pip install streamlit plotly` plus `requirements-lock.txt`):
-  every recorded result is available, and the execution buttons are disabled with the reason shown.
-* **Run simulations**: launch with the GNU Radio environment's interpreter, e.g.
-  `<radioconda>\envs\cognitwin-dash\python.exe dashboard\run_dashboard.py` (setup in
-  [`docs/DASHBOARD.md`](docs/DASHBOARD.md) and [`docs/GNURADIO_SETUP.md`](docs/GNURADIO_SETUP.md)).
+The launcher checks whether the current Python can import GNU Radio. If not, it relaunches
+itself with a GNU Radio conda environment (`cognitwin-gr`, e.g. `D:\micromamba\envs\cognitwin-gr`,
+or `$COGNITWIN_GR_PYTHON`), so **Run simulation** works with the same command. Without such an
+environment the dashboard is browse-only and says why. To create the environment:
+
+```bash
+micromamba create -n cognitwin-gr -c conda-forge python=3.12 numpy=2.2 scipy=1.15 "libblas=*=*openblas" gnuradio=3.10.12 scikit-learn=1.7.2 matplotlib joblib pytest pyyaml streamlit plotly pandas
+```
 
 Eight views: Overview, Live Simulation, Campaign Lab, AI Agents, Policy Comparison,
 Run History, System Diagnostics and Settings. Set inputs, choose a policy and click

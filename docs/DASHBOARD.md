@@ -13,15 +13,17 @@ python dashboard/run_dashboard.py
 
 Open <http://localhost:8501>. Port: append `--server.port 8502`.
 
-* Any interpreter with `streamlit` and `plotly` (plus `requirements-lock.txt`) can **browse**
-  every recorded result. Without GNU Radio, the execution buttons are disabled and the reason is shown.
-* To **execute**, launch with the GNU Radio environment. Environment `cognitwin-dash` is a clone
-  of `cognitwin-gr` (GNU Radio 3.10.12.0, NumPy 2.2.6) plus `streamlit` and `plotly` from conda-forge:
+`run_dashboard.py` uses the current interpreter when it can import GNU Radio. Otherwise it
+relaunches in the first GNU Radio environment it finds that also has Streamlit:
+`$COGNITWIN_GR_PYTHON`, then `cognitwin-gr` / `cognitwin-dash` under `D:\micromamba`,
+`%USERPROFILE%\micromamba`, radioconda or miniforge. On Windows it puts the environment's
+DLL folders on `PATH`, so no activation is needed. Use `--no-gr-switch` to stay on the current
+interpreter (browse-only without GNU Radio).
+
+Environment used on this machine (standalone micromamba, nothing registered system-wide):
 
 ```bash
-mamba create -y -n cognitwin-dash --clone cognitwin-gr
-mamba install -y -n cognitwin-dash -c conda-forge --freeze-installed streamlit plotly
-<radioconda>\envs\cognitwin-dash\python.exe dashboard\run_dashboard.py
+micromamba create -n cognitwin-gr -c conda-forge python=3.12 numpy=2.2 scipy=1.15 "libblas=*=*openblas" gnuradio=3.10.12 scikit-learn=1.7.2 matplotlib joblib pytest pyyaml streamlit plotly pandas
 ```
 
 ## Structure
