@@ -137,13 +137,24 @@ skip with the reason and the scripts exit with `BLOCKED`. Setup and resume comma
 
 ## 🖥️ Control Dashboard
 
+From the repository root:
+
 ```bash
-C:\Users\HP\radioconda\envs\cognitwin-dash\python.exe dashboard\run_dashboard.py
+python dashboard/run_dashboard.py
 ```
 
-Set inputs, choose a policy and click RUN SIMULATION. GNU Radio runs through the existing
-backend, and the dashboard shows the measured results, signal plots and the agent/ACWRA
-decisions. See [`docs/DASHBOARD.md`](docs/DASHBOARD.md).
+Then open <http://localhost:8501> (another port: append `--server.port 8502`).
+
+* **Browse only** (any Python with `pip install streamlit plotly` plus `requirements-lock.txt`):
+  every recorded result is available, and the execution buttons are disabled with the reason shown.
+* **Run simulations**: launch with the GNU Radio environment's interpreter, e.g.
+  `<radioconda>\envs\cognitwin-dash\python.exe dashboard\run_dashboard.py` (setup in
+  [`docs/DASHBOARD.md`](docs/DASHBOARD.md) and [`docs/GNURADIO_SETUP.md`](docs/GNURADIO_SETUP.md)).
+
+Eight views: Overview, Live Simulation, Campaign Lab, AI Agents, Policy Comparison,
+Run History, System Diagnostics and Settings. Set inputs, choose a policy and click
+**Run simulation**. GNU Radio runs through the existing backend, and the views show the run's
+measured results, signal plots and agent/ACWRA decisions. See [`docs/DASHBOARD.md`](docs/DASHBOARD.md).
 
 ---
 

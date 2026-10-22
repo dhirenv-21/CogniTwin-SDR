@@ -1,10 +1,29 @@
 [theme]
 base = "dark"
-primaryColor = "#22d3ee"
-backgroundColor = "#070f1f"
-secondaryBackgroundColor = "#0e1b36"
-textColor = "#e2e8f0"
-font = "sans serif"
+primaryColor = "#38D9FF"
+backgroundColor = "#080D18"
+secondaryBackgroundColor = "#162237"
+textColor = "#E6EDF7"
+linkColor = "#38D9FF"
+borderColor = "#25344A"
+dataframeBorderColor = "#1E2B40"
+dataframeHeaderBackgroundColor = "#111B2C"
+showWidgetBorder = true
+baseRadius = "8px"
+baseFontSize = 14
+font = "Inter, 'Segoe UI', system-ui, -apple-system, sans-serif"
+codeFont = "'JetBrains Mono', 'Cascadia Mono', Consolas, monospace"
+greenColor = "#34C79A"
+yellowColor = "#F5B54A"
+redColor = "#F2706B"
+blueColor = "#38D9FF"
+violetColor = "#818CF8"
+chartCategoricalColors = ["#38D9FF", "#818CF8", "#34C79A", "#F5B54A", "#F2706B", "#94A3B8"]
+
+[theme.sidebar]
+backgroundColor = "#0D1423"
+secondaryBackgroundColor = "#162237"
+borderColor = "#1B2738"
 
 [server]
 headless = true
@@ -15,3 +34,4 @@ gatherUsageStats = false
 
 [client]
 toolbarMode = "minimal"
+showSidebarNavigation = true

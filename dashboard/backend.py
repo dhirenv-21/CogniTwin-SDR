@@ -363,9 +363,24 @@ def signal_products(d: Dict[str, Any]) -> Dict[str, np.ndarray]:
             "f_psd": f_psd[order], "psd_db": 10 * np.log10(psd[order] + 1e-300)}
 
 
-def _row(run_id, source, mod, chan, snr, jam, ber, policy, action, status, path, kind):
-    return {"Run ID": run_id, "Source": source, "Modulation": mod, "Channel": chan, "SNR": snr, "Jammer": jam,
-            "BER": ber, "Policy": policy, "Action": action, "Status": status, "_path": path, "_kind": kind}
+def _row(run_id, source, mod, chan, snr, jam, ber, policy, action, status, path, kind, when="", goodput=None):
+    return {"Run ID": run_id, "Timestamp": when, "Source": source, "Modulation": mod, "Channel": chan, "SNR": snr,
+            "Jammer": jam, "Policy": policy, "BER": ber, "Goodput": goodput, "Action": action, "Status": status,
+            "_path": path, "_kind": kind}
+
+
+def _when(path: str, iso: Optional[str] = None) -> str:
+    """'YYYY-MM-DD HH:MM' from a recorded ISO time, else the file's modification time."""
+    if iso:
+        try:
+            t = _dt.datetime.fromisoformat(str(iso).replace("Z", "+00:00"))
+            return (t.astimezone() if t.tzinfo else t).strftime("%Y-%m-%d %H:%M")      # local time
+        except ValueError:
+            pass
+    try:
+        return _dt.datetime.fromtimestamp(os.path.getmtime(path)).strftime("%Y-%m-%d %H:%M")
+    except OSError:
+        return ""
 
 
 def run_history() -> List[Dict[str, Any]]:
@@ -386,9 +401,11 @@ def run_history() -> List[Dict[str, Any]]:
                    "failed": SRC_INVALID}.get(state, SRC_GNURADIO if prov == {"gnuradio_export"} else
                                               SRC_FIXTURE if prov == {"python_fixture"} else SRC_INVALID)
             ber = np.mean([float(e["ber"]) for e in eps]) if eps else None
+            gp = np.mean([float(e["goodput_bps"]) for e in eps]) if eps else None
             rows.append(_row(rid, src, sp.get("modulation", ""), sp.get("channel", ""), sp.get("snr_db"),
                              sp.get("jammer"), ber, POLICY_LABELS.get(sp.get("policy_effective", ""), ""),
-                             last.get("selected_strategy") or last.get("next_modulation", ""), state, p, "dash_run"))
+                             last.get("selected_strategy") or last.get("next_modulation", ""), state, p, "dash_run",
+                             _when(os.path.join(p, "job.json"), job.get("created")), gp))
     # dashboard campaigns
     if os.path.isdir(CAMPAIGNS):
         for rid in sorted(os.listdir(CAMPAIGNS), reverse=True):
@@ -397,16 +414,21 @@ def run_history() -> List[Dict[str, Any]]:
             state = st.get("state", "?")
             src = {"running": SRC_RUNNING, "queued": SRC_RUNNING, "stopped": SRC_STOPPED,
                    "failed": SRC_INVALID}.get(state, SRC_GNURADIO)
-            rows.append(_row(rid, src, "mixed", "grid", "", "", None, "campaign", "", state, p, "campaign"))
+            job = read_json(os.path.join(p, "job.json"), {}) or {}
+            rows.append(_row(rid, src, "mixed", "grid", "", "", None, "campaign", "", state, p, "campaign",
+                             _when(os.path.join(p, "job.json"), job.get("created"))))
     # repository campaigns (read only)
     camp = os.path.join(ROOT, "results", "gnuradio", "campaign")
     if os.path.isdir(camp):
         for rid in sorted(os.listdir(camp), reverse=True):
             p = os.path.join(camp, rid)
+            when = _when(os.path.join(p, "config.json"), (read_json(os.path.join(p, "config.json"), {}) or {}).get("created"))
             if os.path.exists(os.path.join(p, "ABORTED.md")):
-                rows.append(_row(rid, SRC_ABORTED, "mixed", "grid", "", "", None, "campaign", "", "aborted", p, "aborted"))
+                rows.append(_row(rid, SRC_ABORTED, "mixed", "grid", "", "", None, "campaign", "", "aborted", p, "aborted",
+                                 when))
             elif os.path.exists(os.path.join(p, "runs.csv")):
-                rows.append(_row(rid, SRC_GNURADIO, "mixed", "grid", "", "", None, "campaign", "", "done", p, "campaign"))
+                rows.append(_row(rid, SRC_GNURADIO, "mixed", "grid", "", "", None, "campaign", "", "done", p, "campaign",
+                                 when))
     # repository demo runs (read only)
     demo = os.path.join(ROOT, "results", "gnuradio", "demo")
     if os.path.isdir(demo):
@@ -415,7 +437,7 @@ def run_history() -> List[Dict[str, Any]]:
             npz = [f for f in os.listdir(p) if f.endswith(".npz")]
             if npz:
                 rows.append(_row(rid, SRC_GNURADIO, npz[0].split("-")[1], npz[0].split("-")[2], "", "", None, "demo",
-                                 "", "done", os.path.join(p, npz[0]), "npz"))
+                                 "", "done", os.path.join(p, npz[0]), "npz", _when(os.path.join(p, npz[0]))))
     # historical MATLAB/Simulink exports (read only; metadata only)
     for sub in ("baseline", ""):
         d = os.path.join(ROOT, "simulink", "results", sub)
@@ -424,12 +446,13 @@ def run_history() -> List[Dict[str, Any]]:
         for f in sorted(os.listdir(d)):
             if f.endswith(".mat"):
                 rows.append(_row(f[:-4], SRC_MATLAB, "", "", "", "", None, "", "", "historical",
-                                 os.path.join(d, f), "mat"))
+                                 os.path.join(d, f), "mat", _when(os.path.join(d, f))))
     fx = os.path.join(ROOT, "simulink", "results", "campaign_fixture")
     if os.path.isdir(fx):
         for f in sorted(os.listdir(fx))[:50]:
             if f.endswith(".mat"):
-                rows.append(_row(f[:-4], SRC_FIXTURE, "", "", "", "", None, "", "", "fixture", os.path.join(fx, f), "mat"))
+                rows.append(_row(f[:-4], SRC_FIXTURE, "", "", "", "", None, "", "", "fixture", os.path.join(fx, f), "mat",
+                                 _when(os.path.join(fx, f))))
     return rows
 
 
@@ -488,16 +511,27 @@ def campaign_dirs() -> List[str]:
     return out
 
 
-def campaign_comparison(path: str) -> Dict[str, Any]:
-    """Policy means and condition-level paired ACWRA - baseline statistics (existing CL-2 routine)."""
-    sys.path.insert(0, os.path.join(ROOT, "experiments"))
-    import closed_loop_evaluation as cle
+def campaign_runs(path: str) -> List[Dict[str, Any]]:
+    """runs.csv of a campaign with numeric fields parsed (read only)."""
     with open(os.path.join(path, "runs.csv"), newline="") as fh:
         runs = list(csv.DictReader(fh))
     for r in runs:
         for k in ("goodput_bps", "ber", "per", "spectral_efficiency", "switches"):
             r[k] = float(r[k])
         r["seed"] = int(r["seed"])
+    return runs
+
+
+def campaign_comparison(path: str, conditions: Optional[List[str]] = None) -> Dict[str, Any]:
+    """Policy means and condition-level paired ACWRA - baseline statistics (existing CL-2 routine).
+
+    `conditions` restricts both the means and the paired statistics to those campaign conditions."""
+    sys.path.insert(0, os.path.join(ROOT, "experiments"))
+    import closed_loop_evaluation as cle
+    runs = campaign_runs(path)
+    if conditions is not None:
+        keep = set(conditions)
+        runs = [r for r in runs if r["condition"] in keep]
     pols = sorted({r["policy"] for r in runs})
     conds = sorted({r["condition"] for r in runs})
     means = [{"policy": p, "goodput_kbps": float(np.mean([r["goodput_bps"] for r in runs if r["policy"] == p])) / 1e3,
@@ -526,3 +560,169 @@ def spec_from_inputs(inp: SimInputs) -> Dict[str, Any]:
     d = asdict(inp)
     d["policy_effective"] = inp.effective_policy()
     return d
+
+
+# ------------------------------------------------------------------ read-only views for the redesigned UI
+
+def parse_condition(name: str) -> Dict[str, Any]:
+    """Campaign condition name -> {'kind', 'channel', 'snr_db', 'jammer'} (None where the name carries no value).
+
+    Static names are written by worker._campaign_conditions / gnuradio_campaign.conditions as
+    static_<channel>[_tv]_snr<S>_J<J>; anything else is a dynamic schedule (ramp, step, ...)."""
+    import re
+    m = re.fullmatch(r"static_([a-z]+)(_tv)?_snr(-?[0-9.]+)_J([0-9.eE+-]+)", name)
+    if not m:
+        return {"kind": "dynamic", "channel": "dynamic", "snr_db": None, "jammer": None}
+    chan = m.group(1).upper() + (" (changing)" if m.group(2) else "")
+    return {"kind": "static", "channel": chan, "snr_db": float(m.group(3)), "jammer": float(m.group(4))}
+
+
+def campaign_condition_table(path: str) -> List[Dict[str, Any]]:
+    """Per (condition, policy): seed-averaged goodput / BER / PER exactly as recorded in runs.csv."""
+    agg: Dict[Tuple[str, str], List[Dict[str, Any]]] = {}
+    for r in campaign_runs(path):
+        agg.setdefault((r["condition"], r["policy"]), []).append(r)
+    out = []
+    for (cond, pol), rr in sorted(agg.items()):
+        out.append(dict(parse_condition(cond), condition=cond, policy=pol, seeds=len(rr),
+                        goodput_kbps=float(np.mean([r["goodput_bps"] for r in rr])) / 1e3,
+                        ber=float(np.mean([r["ber"] for r in rr])), per=float(np.mean([r["per"] for r in rr]))))
+    return out
+
+
+def campaign_info(path: str) -> Dict[str, Any]:
+    """Recorded metadata of a campaign folder (config.json or the dashboard job.json); nothing inferred."""
+    cfg = read_json(os.path.join(path, "config.json"), None)
+    if cfg:
+        return {"created": cfg.get("created"), "protocol": cfg.get("protocol"), "data_class": cfg.get("data_class"),
+                "gnuradio_version": cfg.get("gnuradio_version"), "episodes": cfg.get("episodes"),
+                "n_symbols": cfg.get("n_symbols"), "seeds": cfg.get("seeds"), "policies": cfg.get("policies"),
+                "commit": cfg.get("commit")}
+    job = read_json(os.path.join(path, "job.json"), {}) or {}
+    sp = job.get("spec", {})
+    return {"created": job.get("created"), "protocol": "dashboard campaign" if job else None,
+            "data_class": "GNU Radio software simulation" if job else None, "gnuradio_version": None,
+            "episodes": sp.get("episodes"), "n_symbols": sp.get("n_symbols"), "seeds": sp.get("seeds"),
+            "policies": sp.get("policies"), "commit": None}
+
+
+def rel(path: str) -> str:
+    """Repository-relative display path (never an absolute user path)."""
+    for base, label in ((ROOT, ""), (DASH, "<dashboard>")):
+        try:
+            r = os.path.relpath(path, base)
+        except ValueError:                     # another drive
+            continue
+        if not r.startswith(".."):
+            return (label + "/" + r if label else r).replace("\\", "/")
+    return os.path.basename(path)
+
+
+def artifacts(path: str) -> List[Dict[str, Any]]:
+    """Files of a run/campaign folder: display path, size, kind (read only)."""
+    if not os.path.isdir(path):
+        path = os.path.dirname(path)
+    out = []
+    for f in sorted(os.listdir(path)) if os.path.isdir(path) else []:
+        p = os.path.join(path, f)
+        if os.path.isfile(p):
+            out.append({"file": f, "path": rel(p), "bytes": os.path.getsize(p),
+                        "kind": os.path.splitext(f)[1].lstrip(".").lower() or "file", "_abs": p})
+    return out
+
+
+def dashboard_runs(states=("done",)) -> List[str]:
+    """Dashboard simulation folders (newest first) whose job state is in `states`."""
+    if not os.path.isdir(RUNS):
+        return []
+    return [os.path.join(RUNS, d) for d in sorted(os.listdir(RUNS), reverse=True)
+            if job_status(os.path.join(RUNS, d)).get("state") in states]
+
+
+def latest_run_with_episodes() -> Optional[str]:
+    for p in dashboard_runs(("done", "stopped", "failed", "done_with_failures")):
+        if load_episodes(p):
+            return p
+    return None
+
+
+def overview_stats() -> Dict[str, Any]:
+    """Counts for the overview cards, from recorded files only."""
+    camp_runs = camp_eps = valid_eps = 0
+    for p in campaign_dirs():
+        with open(os.path.join(p, "runs.csv"), newline="") as fh:
+            camp_runs += sum(1 for _ in csv.DictReader(fh))
+        f = os.path.join(p, "episodes_steps.csv")
+        if os.path.exists(f):
+            with open(f, newline="") as fh:
+                for r in csv.DictReader(fh):
+                    camp_eps += 1
+                    valid_eps += r.get("provenance") == "gnuradio_export"
+    dash_eps = dash_valid = 0
+    for p in dashboard_runs(("done", "stopped", "done_with_failures")):
+        for e in load_episodes(p):
+            dash_eps += 1
+            dash_valid += e.get("provenance") == "gnuradio_export"
+    return {"dashboard_runs": len(dashboard_runs(("done",))), "campaign_runs": camp_runs,
+            "campaigns": len(campaign_dirs()), "episodes": camp_eps + dash_eps,
+            "validated_episodes": valid_eps + dash_valid}
+
+
+def gnuradio_state(status: Dict[str, Any], executing: bool) -> Tuple[str, str, str]:
+    """(label, level, detail): not installed / installed but import failed / ready / executing.
+
+    'executing' is reported only while a dashboard worker is running (status.json + live PID)."""
+    detail = str(status.get("detail", ""))
+    if status.get("available"):
+        if executing:
+            return f"GNU Radio {status.get('version')} · executing", "run", detail
+        return f"GNU Radio {status.get('version')} · ready", "ok", detail
+    if detail.startswith("ModuleNotFoundError"):
+        return "GNU Radio not installed", "err", "not importable from this Python interpreter"
+    return "GNU Radio installed · import failed", "warn", detail
+
+
+def recent_problems(limit: int = 20) -> List[Dict[str, Any]]:
+    """Failed / blocked / invalid / stopped dashboard jobs and recorded campaign failures (newest first)."""
+    out = []
+    for base in (RUNS, CAMPAIGNS):
+        if not os.path.isdir(base):
+            continue
+        for d in sorted(os.listdir(base), reverse=True):
+            p = os.path.join(base, d)
+            st = job_status(p)
+            if st.get("state") in ("failed", "blocked", "invalid", "stopped", "done_with_failures"):
+                out.append({"job": d, "state": st.get("state"), "message": str(st.get("message", ""))[:400],
+                            "when": _when(os.path.join(p, "status.json"))})
+            for f in read_json(os.path.join(p, "failures.json"), []) or []:
+                out.append({"job": d, "state": "run failure", "message": str(f)[:400],
+                            "when": _when(os.path.join(p, "failures.json"))})
+    return sorted(out, key=lambda r: r["when"], reverse=True)[:limit]
+
+
+def environment_info() -> Dict[str, str]:
+    """Interpreter and library versions (no paths, no environment variables)."""
+    import platform
+    info = {"Python": platform.python_version(), "Platform": f"{platform.system()} {platform.version()}"}
+    for mod, label in (("numpy", "NumPy"), ("scipy", "SciPy"), ("sklearn", "scikit-learn"),
+                       ("streamlit", "Streamlit"), ("plotly", "Plotly")):
+        try:
+            info[label] = __import__(mod).__version__
+        except Exception:
+            info[label] = "not installed"
+    return info
+
+
+def run_dashboard_tests(timeout: int = 600) -> Dict[str, Any]:
+    """Run tests/test_dashboard.py in a subprocess (its job output goes to a temp folder)."""
+    t0 = _dt.datetime.now()
+    try:
+        out = subprocess.run([sys.executable, "-m", "pytest", "-q", "-p", "no:cacheprovider",
+                              os.path.join(ROOT, "tests", "test_dashboard.py")],
+                             cwd=ROOT, capture_output=True, text=True, timeout=timeout)
+    except subprocess.TimeoutExpired:
+        return {"ok": False, "summary": f"timed out after {timeout} s", "when": t0.strftime("%Y-%m-%d %H:%M:%S"),
+                "tail": ""}
+    lines = [ln for ln in out.stdout.strip().splitlines() if ln.strip()]
+    return {"ok": out.returncode == 0, "summary": lines[-1] if lines else "(no output)",
+            "when": t0.strftime("%Y-%m-%d %H:%M:%S"), "tail": "\n".join(lines[-15:])}
