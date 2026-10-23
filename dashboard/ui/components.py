@@ -194,6 +194,20 @@ def styled(rows: Sequence[dict], formats: Optional[dict] = None):
     return df.style.format(formatter=formats or {}, na_rep="—")
 
 
+def incomplete_campaign_banner(path: str) -> bool:
+    """Warn when campaign statistics come from an unfinished campaign. Returns True if it was incomplete."""
+    import backend as B
+    c = B.campaign_completion(path)
+    if c["complete"]:
+        return False
+    runs = f"{c['done']} of {c['total']} runs recorded" if c.get("total") else "partial results"
+    st.warning(f"Incomplete campaign — state **{c['state']}**, {runs}"
+               + (f", {c['failed']} failed" if c.get("failed") else "")
+               + ". The statistics below cover only the recorded runs; this is not a complete analysis.",
+               icon=":material/warning:")
+    return True
+
+
 def gr_banner(status: dict) -> None:
     """Shown on views that execute: why execution is disabled (recorded results stay available)."""
     if not status.get("available"):

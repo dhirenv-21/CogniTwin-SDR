@@ -309,3 +309,40 @@ def test_fixture_run_appears_in_the_ui_labelled_as_fixture(fixture_run):
     assert any("python_fixture" in m.value.lower() for m in at.markdown)
     at.switch_page("views/agents.py").run()
     assert not at.exception
+
+
+# ------------------------------------------------------------------ acceptance regressions
+
+def test_run_without_episodes_is_not_presented_as_complete():
+    rid, path = B.new_job_dir("simulation")
+    B.write_json(os.path.join(path, "job.json"), {"kind": "simulation", "run_id": rid, "spec": B.spec_from_inputs(B.SimInputs())})
+    B.write_json(os.path.join(path, "status.json"), {"state": "done", "message": "complete"})   # but no episodes.csv
+    at = _app()
+    at.session_state["selected"] = {"kind": "dash_run", "path": path}
+    at.run()
+    at.switch_page("views/live.py").run()
+    assert not at.exception
+    text = " ".join(m.value for m in at.markdown)
+    assert "produced no episodes" in text and "Run done" not in text
+
+
+def test_incomplete_dashboard_campaign_is_labelled_on_policy_comparison():
+    src = os.path.join(ROOT, "results", "gnuradio", "campaign", "grcl1_20261022_v2", "runs.csv")
+    if not os.path.exists(src):
+        pytest.skip("campaign grcl1_20261022_v2 not present")
+    import csv as _csv
+    rows = list(_csv.DictReader(open(src)))
+    rid, camp = B.new_job_dir("campaign")
+    with open(os.path.join(camp, "runs.csv"), "w", newline="") as fh:
+        w = _csv.DictWriter(fh, fieldnames=list(rows[0]))
+        w.writeheader()
+        w.writerows(rows[:60])
+    B.write_json(os.path.join(camp, "status.json"), {"state": "stopped", "done": 60, "total": 810})
+    assert not B.campaign_completion(camp)["complete"]
+    assert B.campaign_completion(os.path.dirname(src))["complete"]
+    at = _app()
+    at.session_state["pc_camp"] = camp
+    at.run()
+    at.switch_page("views/comparison.py").run()
+    assert not at.exception
+    assert any("Incomplete campaign" in w.value and "60 of 810" in w.value for w in at.warning)

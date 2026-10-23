@@ -40,6 +40,7 @@ with st.container(border=True, key="panel_filters"):
     C.note("Modulation filter: not applicable — runs are per policy, and adaptive policies change modulation "
            "between episodes. Applied modulations are visible per episode on AI Agents.")
 
+incomplete = C.incomplete_campaign_banner(camp)
 conds = [c for c in conds_all if meta[c]["channel"] in chs and
          (meta[c]["kind"] == "dynamic" or (meta[c]["snr_db"] in snr and meta[c]["jammer"] in jam))]
 if not conds:

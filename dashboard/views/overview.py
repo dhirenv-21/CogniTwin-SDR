@@ -130,8 +130,10 @@ with c1:
         ref = next((p for p in camps if os.path.basename(p) == "grcl1_20261022_v2"), camps[-1] if camps else None)
         if ref:
             comp = D.comparison(ref, D.runs_mtime(ref))
+            done = B.campaign_completion(ref)
             C.section("ACWRA vs baselines", "scale",
-                      f'<span class="mono">{C.esc(os.path.basename(ref))}</span> · {comp["runs"]} runs · '
+                      ("" if done["complete"] else C.badge(f"incomplete · {done['state']}", "warn") + " ")
+                      + f'<span class="mono">{C.esc(os.path.basename(ref))}</span> · {comp["runs"]} runs · '
                       f'{comp["conditions"]} conditions')
             a, b = st.columns(2)
             a.plotly_chart(P.policy_bars(comp["means"], "goodput_kbps", "mean goodput (kb/s)", 250), width="stretch",

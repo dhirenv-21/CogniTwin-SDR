@@ -196,7 +196,10 @@ def results():
                     "clock")
             return
         else:
-            C.empty(f"Run {job.get('state', 'produced no episodes')}", str(job.get("message", ""))[:400], "alert")
+            # never let a job state such as "done" read as a complete result when no episode was recorded
+            C.empty("This run produced no episodes",
+                    f"Job state: {job.get('state', 'unknown')} — {str(job.get('message', ''))[:300]}. "
+                    "episodes.csv is missing or empty in the run folder, so there is nothing to show.", "alert")
             return
     elif kind == "npz":
         export, vinfo = D.npz(cur, D.mtime(cur))

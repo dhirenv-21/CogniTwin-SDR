@@ -590,6 +590,22 @@ def campaign_condition_table(path: str) -> List[Dict[str, Any]]:
     return out
 
 
+def campaign_completion(path: str) -> Dict[str, Any]:
+    """Whether a campaign's analysis covers a finished campaign.
+
+    Repository campaigns with runs.csv and no ABORTED.md were finished by gnuradio_campaign.py.
+    Dashboard campaigns are complete only when their job state is 'done' (not running, stopped,
+    failed or done_with_failures)."""
+    if os.path.exists(os.path.join(path, "ABORTED.md")):
+        return {"complete": False, "state": "aborted", "done": None, "total": None, "failed": None}
+    if os.path.realpath(path).startswith(os.path.realpath(CAMPAIGNS) + os.sep):
+        st = job_status(path)
+        return {"complete": st.get("state") == "done", "state": st.get("state", "unknown"), "done": st.get("done"),
+                "total": st.get("total"), "failed": st.get("failed")}
+    return {"complete": os.path.exists(os.path.join(path, "runs.csv")), "state": "done", "done": None, "total": None,
+            "failed": None}
+
+
 def campaign_info(path: str) -> Dict[str, Any]:
     """Recorded metadata of a campaign folder (config.json or the dashboard job.json); nothing inferred."""
     cfg = read_json(os.path.join(path, "config.json"), None)
